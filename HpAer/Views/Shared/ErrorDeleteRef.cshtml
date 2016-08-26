@@ -1,0 +1,28 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "ErrorDeleteRef";
+}
+
+
+
+<div class="textoTitulo">
+    <h1>Ups!!</h1>
+</div>
+<hr />
+<div class="form-horizontal">
+    <h1 class="text-danger">El registro intenta borrar tiene datos asociados.</h1>
+</div>
+
+<hr />
+<div class="panel-footer">
+    <h4 class="text-danger">Error.@Model.Exception.Message</h4>
+
+</div>
+
+<hr />
+
+<a href="@Url.Action(@Model.ActionName, @Model.ControllerName)" class="btn btn-default"> Volver </a>
+
+
+

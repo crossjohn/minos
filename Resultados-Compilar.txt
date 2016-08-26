@@ -1,0 +1,3 @@
+﻿1>------ Operación Compilar iniciada: proyecto: HpAer, configuración: Debug Any CPU ------
+1>  HpAer -> C:\proyectos\UTN\Sistemas\Habilitacion Profesional\HpAer\HpAer\bin\HpAer.dll
+========== Compilar: 1 correctos, 0 incorrectos, 0 actualizados, 0 omitidos ==========

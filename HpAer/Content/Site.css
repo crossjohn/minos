@@ -1,0 +1,305 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+  color:darkorange;
+}
+
+.form-horizontal {
+    font-family: 'Walter Turncoat', cursive; /*'Shadows Into Light Two', Arial, Helvetica, sans-serif;*/
+    font-size: 15px;
+    color: darkorange;
+    background-color:#F0FFFF;
+}
+
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+.navbar-default {
+  background-color: #ed6522;
+  border-color: #c05c2b;
+}
+.navbar-default .navbar-brand {
+  color: #ecf0f1;
+}
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+  color: #ffbbbc;
+}
+.navbar-default .navbar-text {
+  color: #ecf0f1;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #ecf0f1;
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  color: #ffbbbc;
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+  color: #ffbbbc;
+  background-color: #c05c2b;
+}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+  color: darkorange; /* #ffbbbc;*/
+  background-color: #c05c2b;
+}
+.navbar-default .navbar-toggle {
+  border-color: #c05c2b;
+}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+  background-color: #c05c2b;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #ecf0f1;
+}
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+  border-color: #ecf0f1;
+}
+.navbar-default .navbar-link {
+  color: #ecf0f1;
+}
+.navbar-default .navbar-link:hover {
+  color: #ffbbbc;
+}
+
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #ecf0f1;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #ffbbbc;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #ffbbbc;
+    background-color: #c05c2b;
+  }
+}
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+
+
+ 
+header
+{
+    background-color: orange;
+
+}
+
+
+
+.label
+{
+    font-family: 'Shadows Into Light Two', Arial, Helvetica, Calibri;
+    font-size: 15px;
+    color: 	RoyalBlue;
+    background-color: rgba(237, 237, 237, 1);
+    font-weight: 900;
+    padding: 15px;
+}
+
+.table
+{
+    font-size: 12px;
+    background-color:#F0FFFF;
+    border-collapse: separate;
+    border-spacing:  5px 5px;
+    text-align:left;
+    margin-left: 0; 
+    margin-right: auto;
+
+ }
+
+.table-font-chica
+{
+    background-color:#F0FFFF;
+    font-size: 12px;
+    border-collapse: separate;
+    border-spacing:  5px 5px;
+    text-align:left;
+    margin-left: auto; 
+    margin-right: auto;
+ }
+
+.info-registro
+{
+    background-color:#F0FFFF;
+ }
+.label-button {
+    font-family: 'Shadows Into Light Two', Arial, Helvetica, Calibri;
+    font-size: 20px;
+    color: black;
+    padding: 10px;
+}
+.centrarContenido
+{
+    padding-top: 25px;
+}
+.header-tabla
+{
+    font-family: 'Walter Turncoat', cursive;
+    font-size: 15px;
+    color: black;
+    background-color:#B0C4DE;
+}
+.textoMenu
+{
+    font-family: 'Walter Turncoat', cursive;
+    font-size: 20px;
+    color: white;
+}
+.textoTitulo
+{
+    font-family: 'Shadows Into Light Two', Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    color: 	#1E90FF;
+    background-color: rgba(237, 237, 237, 1);
+    font-weight: 900;
+    padding: 15px;
+}
+.textoSubtitulo
+{
+    font-family: 'Neucha', cursive;
+    font-size: 28px;
+    color: black;
+}
+.textoParrafo
+{
+    font-family: 'Neucha', cursive;
+    font-size: 18px;
+    color: black;
+}
+.centrarRedes
+{
+    padding-top: 25px;
+    padding-left: 80px;
+}
+.color1
+{
+    background-color: orange;
+}
+.color2
+{
+    background-color: gray;
+}
+.color3
+{
+    background-color: white;
+}
+.colorBlue
+{
+    background-color: blue;
+}
+.colorBase
+{
+    background-color: #ed6522;
+}
+.fondo
+{
+    background-color: rgba(237, 237, 237, 1);
+}
+
+#inicio {
+    background: url(../img/fondo_inicio.jpg) no-repeat center center;
+    padding: 0;
+    -webkit-background-size: cover;
+    background-size: cover;
+    -moz-background-size: cover;
+    background-attachment: fixed;
+    color: #fff;
+}
+
+#inicio .overlay 
+{
+    background-color: rgba(3, 3, 3, 0.8);
+    min-height: 700px;
+}
+
+#inicio h1
+{
+    line-height: 60px;
+    font-size: 45px;
+    font-weight: 900;
+    padding-top: 150px;
+    padding-bottom: 35px;
+    color: #FF6600;
+    font-family: 'Walter Turncoat', cursive;
+}
+
+#inicio h4 
+{
+    line-height: 30px;
+    font-size: 12px;
+    padding-bottom: 40px;
+    text-transform: uppercase;
+    color: white;
+}
+
+#inicio i 
+{
+    font-size: 80px;
+    padding: 30px;
+    color: #FF6600;
+}
+
+
+footer 
+{
+    padding: 20px;
+    font-size: 15px;
+    text-align: center;
+    font-weight: 900;
+    background-color: rgba(237, 237, 237, 1);
+}
+
+footer a, footer a:hover 
+{
+    color: #000;
+    text-decoration: none;
+}
+
+#services {
+    /*background-color: rgba(237, 237, 237, 1);*/
+}
+
+    #services i {
+        font-size: 80px;
+        padding: 30px;
+        color: #FF6600;
+    }
+
+    #services h4 {
+        padding-bottom: 5px;
+        padding-top: 15px;
+    }
+
+    /*JC*/
+    span{
+    font: normal normal normal 23px/1.2em 'Open Sans',sans-serif;
+    transition: color 0.4s ease 0s;
+    display: inline-block;
+    margin-top: calc(-1 * 2px);
+    position: relative;
+    white-space: nowrap;
+
+   
+}

@@ -1,0 +1,63 @@
+﻿@model HpAer.Models.Raza
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="textoTitulo">
+    <h1>Detalle</h1>
+</div>
+
+<div class="label-button">
+    <label>Raza</label>
+</div>
+
+<div class="info-registro">
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estadoHab)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estadoHab)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaBaja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaBaja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Especy.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Especy.nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a href="@Url.Action("Edit", new { id = Model.Id })" class="btn btn-default"> Modificar </a> |
+    <a href="@Url.Action("Index")" class="btn btn-default"> Cerrar </a>
+</p>

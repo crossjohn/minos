@@ -1,0 +1,107 @@
+﻿@model HpAer.Models.Persona
+@using Hpaer.Helpers
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <strong>Agregar Persona</strong>
+    </div>
+        <div class="info-registro">
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Nombre)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Apellido)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Apellido)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.fechaNac)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.fechaNac)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.fechaAlta)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.fechaAlta)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.fechaBaja)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.fechaBaja)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.telefono)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.telefono)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.telefonoCel)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.telefonoCel)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.puntaje)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.puntaje)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.UsrId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.UsrId)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.email)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.email)
+                </dd>
+
+            </dl>
+        </div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Aceptar" class="btn btn-default" /> |
+                <a href="@Url.Action("Index")" class="btn btn-default"> Cancelar </a>
+            </div>
+            <h3>¿Esta seguro de borrar este registro?</h3>
+        }
+    </div>

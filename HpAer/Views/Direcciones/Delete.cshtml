@@ -1,0 +1,108 @@
+﻿@model HpAer.Models.Direccion
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="textoTitulo">
+    <h1>Borrar</h1>
+</div>
+
+<div class="label-button">
+    <label>Direccion</label>
+</div>
+
+<div>
+    <div class="info-registro">
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayName("Calle")
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Calle.calle_nombre)
+            </dd>
+
+
+            <dt>
+                @Html.DisplayName("Numero")
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.numero)
+            </dd>
+
+            <dt>
+                @Html.DisplayName("Barrio")
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Barrio.nombre)
+            </dd>
+
+            <dt>
+                @Html.DisplayName("Piso")
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.piso)
+            </dd>
+
+            <dt>
+                @Html.DisplayName("Departamento")
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.depto)
+            </dd>
+
+            <dt>
+                @Html.DisplayName("Torre")
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Torre)
+            </dd>
+
+
+            <dt>
+                @Html.DisplayName("Localidad")
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Localidad.nombre)
+            </dd>
+
+            <dt>
+                @Html.DisplayName("Provincia")
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Provincia.nombre)
+            </dd>
+
+            <dt>
+                @Html.DisplayName("Pais")
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Pais.pais_nombre)
+            </dd>
+
+        </dl>
+      </div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Aceptar" class="btn btn-default" /> |
+                <a href="@Url.Action("Index")" class="btn btn-default"> Cancelar </a>
+            </div>
+
+        }
+        <h3>¿Esta seguro de borrar este registro?</h3>
+
+
+    </div>

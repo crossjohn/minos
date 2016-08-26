@@ -1,0 +1,197 @@
+﻿@model HpAer.Models.Direccion
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" id="myModalLabel">Modificar Direccion</h4>
+</div>
+
+@{
+    ViewBag.Title = "EditVp";
+}
+
+
+@using (Html.BeginForm())
+{
+    <div class="modal-body">
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model.personaId)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.paisId, "Pais", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("paisId", null, htmlAttributes: new { @class = "form-control" })
+                    <!--   @Html.DropDownListFor(model => model.paisId, Model.AvailablePaises, htmlAttributes: new { @class = "form-control" })-->
+                    @Html.ValidationMessageFor(model => model.paisId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.provinciaId, "Provincia", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("provinciaId", null, htmlAttributes: new { @class = "form-control" })
+                    <!-- @Html.DropDownListFor(model => model.provinciaId, Model.AvailableProvincias, htmlAttributes: new { @class = "form-control" }) -->
+                    @Html.ValidationMessageFor(model => model.provinciaId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.localidadId, "Localidad", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("localidadId", null, htmlAttributes: new { @class = "form-control" })
+                    <!--        @Html.DropDownListFor(model => model.localidadId, Model.AvailableLocalidades, htmlAttributes: new { @class = "form-control" }) -->
+                    @Html.ValidationMessageFor(model => model.localidadId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.barrioId, "Barrio", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("barrioId", null, htmlAttributes: new { @class = "form-control" })
+                    <!--              @Html.DropDownListFor(model => model.barrioId, Model.AvailableBarrios, htmlAttributes: new { @class = "form-control" }) -->
+                    @Html.ValidationMessageFor(model => model.barrioId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.calleId, "Calle", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("calleId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.calleId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.numero, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.numero, "Numero", new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.numero, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.piso, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.piso, "Piso", new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.piso, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Torre, "Torre", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Torre, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Torre, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.depto, "Departamento", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.depto, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.depto, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <input class="btn btn-primary" type="submit" value="Aceptar" /> |
+                <a data-dismiss="modal" title="Cancelar" class="btn btn-default"> Cancelar </a>
+            </div>
+        </div>
+     </div>
+   }
+
+
+
+
+        <script type="text/javascript">
+            $(function () {
+                $("#paisId").change(function () {
+                    var selectedItem = $(this).val();
+                    var ddlStates = $("#provinciaId");
+                    var statesProgress = $("#states-loading-progress");
+                    statesProgress.show();
+                    $.ajax({
+                        cache: false,
+                        type: "GET",
+                        url: "@(Url.RouteUrl("GetProvinciasByPaisId"))",
+                        data: { "paisId": selectedItem },
+                        success: function (data) {
+                            ddlStates.html('');
+                            ddlStates.append($('<option></option>').val("Null").html("Seleccione un valor"));
+                            $.each(data, function (id, option) {
+                                ddlStates.append($('<option></option>').val(option.id).html(option.name));
+                            });
+
+                            statesProgress.hide();
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            alert('Error cargando provincias.');
+                            statesProgress.hide();
+                        }
+
+                    });
+                });
+            });
+
+            $(function () {
+                $("#provinciaId").change(function () {
+                    var selectedItem = $(this).val();
+                    var ddlStates = $("#localidadId");
+                    var statesProgress = $("#states-loading-progress");
+                    statesProgress.show();
+                    $.ajax({
+                        cache: false,
+                        type: "GET",
+                        url: "@(Url.RouteUrl("GetLocalidadesByProvinciaId"))",
+                        data: { "provinciaId": selectedItem },
+                        success: function (data) {
+                            ddlStates.html('');
+                            ddlStates.append($('<option></option>').val("Null").html("Seleccione un valor"));
+                            $.each(data, function (id, option) {
+                                ddlStates.append($('<option></option>').val(option.id).html(option.name));
+                            });
+                            statesProgress.hide();
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            alert('Error cargando localidades.');
+                            statesProgress.hide();
+                        }
+                    });
+                });
+            });
+
+            $(function () {
+                $("#localidadId").change(function () {
+                    var selectedItem = $(this).val();
+                    var ddlStates = $("#barrioId");
+                    var statesProgress = $("#states-loading-progress");
+                    statesProgress.show();
+                    $.ajax({
+                        cache: false,
+                        type: "GET",
+                        url: "@(Url.RouteUrl("GetBarriosByLocalidadId"))",
+                        data: { "localidadId": selectedItem },
+                        success: function (data) {
+                            ddlStates.html('');
+                            ddlStates.append($('<option></option>').val("Null").html("Seleccione un valor"));
+                            $.each(data, function (id, option) {
+                                ddlStates.append($('<option></option>').val(option.id).html(option.name));
+                            });
+                            statesProgress.hide();
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            alert('Error cargando barrios.');
+                            statesProgress.hide();
+                        }
+                    });
+                });
+            });
+
+        </script>
+        <span id="states-loading-progress" style="display: none;">Por favor espere..</span>
+

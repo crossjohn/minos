@@ -1,0 +1,79 @@
+﻿@model HpAer.Models.RegistroAccione
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" id="myModalLabel">Desactivar Accion Voluntaria</h4>
+</div>
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div>
+    <div class="info-registro">
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.fechaAlta)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.fechaAlta)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.fechcaBaja)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.fechcaBaja)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.comentario)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.comentario)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.estadoHab)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.estadoHab)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Accione.nombre)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Accione.nombre)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Persona.Nombre)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Persona.Nombre)
+            </dd>
+
+        </dl>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="modal-footer">
+            <h4 class="modal-title" id="myModalLabel">¿Esta seguro de borrar este registro?</h4>
+            <input type="submit" value="Aceptar" class="btn btn-default" /> |
+            <a data-dismiss="modal" class="btn btn-default"> Cancelar </a>
+        </div>
+
+    }
+</div>
+

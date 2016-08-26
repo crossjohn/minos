@@ -1,0 +1,130 @@
+﻿@model HpAer.Models.Animal
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="textoTitulo">
+    <h1>Detalle</h1>
+</div>
+
+<div class="label-button">
+    <label>Animal</label>
+</div>
+<hr />
+
+<div class="col-md-4">
+        <div class="dl-horizontal">
+            <dl>
+                <dt>
+                    @Html.DisplayNameFor(model => model.nombre)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.nombre)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Raza.nombre)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Raza.nombre)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.edad)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.edad)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.fechaNac)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.fechaNac)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.caracteristicas)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.caracteristicas)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Tamanio)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Tamanio.nombre)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.fechaAlta)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.fechaAlta)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.enAdopcion)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.enAdopcion)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.fechaAdop)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.fechaAdop)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.enTratamiento)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.enTratamiento)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.fechaTratamiento)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.fechaTratamiento)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.estadoHab)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.estadoHab)
+                </dd>
+            </dl>
+    </div>
+    <div class="text-center">
+        <a href="@Url.Action("Edit", new { id = Model.Id })" class="btn btn-default"> Modificar </a> |
+        <a href="@Url.Action("Index")" class="btn btn-default"> Cerrar </a>
+    </div>
+</div>
+
+<div class="col-md-pull-4">
+    <div class=" dl-horizontal">
+    
+        @if (Model.Files.Any(f => f.FileType == (Int32)HpAer.Models.FileType.Avatar))
+        {
+            
+               <div style="color:orange;"><strong>Foto</strong></div>
+                
+            
+                <img src="~/File?id=@Model.Files.First(f => f.FileType == (Int32)HpAer.Models.FileType.Avatar).FileId" alt="avatar" height="400" width="300" class="img-responsive" style="padding:3px 0px; border:solid; border-color:burlywood"/>
+            
+        }
+    
+</div>
+
+</div>
+

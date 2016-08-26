@@ -1,0 +1,2737 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HpAerDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Acciones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar(max)" />
+          <Property Name="descripcion" Type="nvarchar(max)" />
+          <Property Name="isSelected" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Adopcions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="empleadoId" Type="int" />
+          <Property Name="voluntarioId" Type="int" />
+          <Property Name="animalId" Type="int" />
+          <Property Name="fechaAlta" Type="datetime" />
+          <Property Name="fechaCancelacion" Type="datetime" />
+          <Property Name="fechaConfirmacion" Type="datetime" />
+          <Property Name="dias" Type="int" />
+          <Property Name="fechaFin" Type="datetime" />
+          <Property Name="fechaEntrega" Type="datetime" />
+          <Property Name="esTemporal" Type="bit" Nullable="false" />
+          <Property Name="estadoAdopcionId" Type="int" />
+          <Property Name="tipoAdopcionId" Type="int" />
+          <Property Name="direccionId" Type="int" />
+          <Property Name="VoluntarioUsrId" Type="nvarchar" MaxLength="255" />
+          <Property Name="EmpleadoUsrId" Type="nvarchar" MaxLength="255" />
+          <Property Name="empleadoName" Type="nvarchar(max)" />
+          <Property Name="voluntarioName" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Animals">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="fechaNac" Type="datetime" />
+          <Property Name="fechaAlta" Type="datetime" />
+          <Property Name="edad" Type="int" Nullable="false" />
+          <Property Name="fechaBaja" Type="datetime" />
+          <Property Name="caracteristicas" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="tamanioId" Type="int" />
+          <Property Name="razaId" Type="int" />
+          <Property Name="enAdopcion" Type="bit" />
+          <Property Name="Discriminator" Type="nvarchar" MaxLength="128" />
+          <Property Name="enTratamiento" Type="bit" />
+          <Property Name="estadoHab" Type="bit" />
+          <Property Name="fechaAdop" Type="date" />
+          <Property Name="fechaTratamiento" Type="date" />
+        </EntityType>
+        <EntityType Name="Apadrinamientoes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="empleadoId" Type="int" />
+          <Property Name="voluntarioId" Type="int" />
+          <Property Name="animalId" Type="int" Nullable="false" />
+          <Property Name="fechaAlta" Type="datetime" Nullable="false" />
+          <Property Name="fechaCancelacion" Type="datetime" Nullable="false" />
+          <Property Name="fechaConfirmacion" Type="datetime" Nullable="false" />
+          <Property Name="fechaBaja" Type="datetime" Nullable="false" />
+          <Property Name="importe" Type="real" Nullable="false" />
+          <Property Name="estadoApadrinamientoId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="ConfirmedEmail" Type="bit" Nullable="false" />
+          <Property Name="nombreUsuario" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AtencionMedicas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="animalId" Type="int" Nullable="false" />
+          <Property Name="veterinariaId" Type="int" Nullable="false" />
+          <Property Name="productoVeterinariaId" Type="int" />
+          <Property Name="tratamiento" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="nombreVeterinario" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="fechaBaja" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Barrios">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="codigoPostal" Type="nvarchar" MaxLength="10" />
+          <Property Name="localidadId" Type="int" Nullable="false" />
+          <Property Name="Zona" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Calles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="calle_nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="localidadId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Direcciones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="paisId" Type="int" Nullable="false" />
+          <Property Name="provinciaId" Type="int" Nullable="false" />
+          <Property Name="localidadId" Type="int" Nullable="false" />
+          <Property Name="barrioId" Type="int" Nullable="false" />
+          <Property Name="calleId" Type="int" Nullable="false" />
+          <Property Name="numero" Type="int" />
+          <Property Name="piso" Type="nvarchar" MaxLength="20" />
+          <Property Name="Torre" Type="nvarchar" MaxLength="50" />
+          <Property Name="depto" Type="nvarchar" MaxLength="5" />
+          <Property Name="personaId" Type="int" />
+          <Property Name="veterinariaId" Type="int" />
+          <Property Name="incidenteId" Type="int" />
+        </EntityType>
+        <EntityType Name="Especies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="150" />
+          <Property Name="fechaBaja" Type="datetime" />
+          <Property Name="estadoHab" Type="bit" />
+        </EntityType>
+        <EntityType Name="EstadoAdopcions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EstadoApadrinamientoes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="EstadoIncidentes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="estadoInc" Type="nvarchar(max)" />
+          <Property Name="descripcion" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="FecParam">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="fecha_desde" Type="date" />
+          <Property Name="fecha_hasta" Type="date" />
+        </EntityType>
+        <EntityType Name="FileIncidentes">
+          <Key>
+            <PropertyRef Name="FileIncidenteId" />
+          </Key>
+          <Property Name="FileIncidenteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="255" />
+          <Property Name="ContentType" Type="nvarchar" MaxLength="100" />
+          <Property Name="Content" Type="varbinary(max)" />
+          <Property Name="FileType" Type="int" Nullable="false" />
+          <Property Name="incidentelId" Type="int" Nullable="false" />
+          <Property Name="incidente_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="FilePaths">
+          <Key>
+            <PropertyRef Name="FilePathId" />
+          </Key>
+          <Property Name="FilePathId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="255" />
+          <Property Name="FileType" Type="int" Nullable="false" />
+          <Property Name="animalId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Files">
+          <Key>
+            <PropertyRef Name="FileId" />
+          </Key>
+          <Property Name="FileId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="255" />
+          <Property Name="ContentType" Type="nvarchar" MaxLength="100" />
+          <Property Name="Content" Type="varbinary(max)" />
+          <Property Name="FileType" Type="int" Nullable="false" />
+          <Property Name="animalId" Type="int" Nullable="false" />
+          <Property Name="Incidente_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="Incidentes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="150" />
+          <Property Name="tamanioId" Type="int" />
+          <Property Name="razaId" Type="int" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Apellido" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="telefono" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="fechaFin" Type="datetime" />
+          <Property Name="fechaAlta" Type="datetime" />
+          <Property Name="fechaBaja" Type="datetime" />
+          <Property Name="tipoIncidenteId" Type="int" />
+          <Property Name="especieId" Type="int" />
+          <Property Name="estadoIncidenteId" Type="int" />
+          <Property Name="VoluntarioUsrId" Type="nvarchar" MaxLength="255" />
+          <Property Name="voluntarioName" Type="nvarchar(max)" />
+          <Property Name="voluntarioId" Type="int" />
+          <Property Name="calle" Type="nvarchar(max)" />
+          <Property Name="lat" Type="nvarchar(max)" />
+          <Property Name="lng" Type="nvarchar(max)" />
+          <Property Name="VoluntarioSolucionUsrId" Type="nvarchar" MaxLength="255" />
+          <Property Name="voluntarioSolucionName" Type="nvarchar(max)" />
+          <Property Name="barrioId" Type="int" />
+        </EntityType>
+        <EntityType Name="Localidades">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="provinciaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Paises">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pais_nombre" Type="nvarchar" MaxLength="20" />
+          <Property Name="pais_habil" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Personas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Apellido" Type="nvarchar" MaxLength="50" />
+          <Property Name="fechaNac" Type="datetime" />
+          <Property Name="fechaAlta" Type="datetime" />
+          <Property Name="fechaBaja" Type="datetime" />
+          <Property Name="telefono" Type="nvarchar" MaxLength="15" />
+          <Property Name="telefonoCel" Type="nvarchar" MaxLength="15" />
+          <Property Name="puntaje" Type="int" />
+          <Property Name="UsrId" Type="nvarchar" MaxLength="255" />
+          <Property Name="email" Type="nvarchar(max)" />
+          <Property Name="estadohab" Type="bit" />
+          <Property Name="voluntario" Type="bit" />
+        </EntityType>
+        <EntityType Name="ProductoVeterinarias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="cantidad" Type="int" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="fechaBaja" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Provincias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="paisId" Type="int" />
+        </EntityType>
+        <EntityType Name="Razas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="150" />
+          <Property Name="especieID" Type="int" />
+          <Property Name="fechaBaja" Type="datetime" />
+          <Property Name="estadoHab" Type="bit" />
+        </EntityType>
+        <EntityType Name="RegistroAcciones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fechaAlta" Type="datetime" Nullable="false" />
+          <Property Name="fechcaBaja" Type="datetime" />
+          <Property Name="comentario" Type="nvarchar(max)" />
+          <Property Name="personaId" Type="int" Nullable="false" />
+          <Property Name="accionesId" Type="int" Nullable="false" />
+          <Property Name="estadoHab" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tamanios">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="150" />
+          <Property Name="fechaBaja" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TipoAdopcions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipoAdopcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoIncidentes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipoIncidente" Type="nvarchar(max)" />
+          <Property Name="descripcion" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Veterinarias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="direccion" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="telefono" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="fechaBaja" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_dbo_Adopcions_dbo_Animals_animalId">
+          <End Role="Animals" Type="Self.Animals" Multiplicity="0..1" />
+          <End Role="Adopcions" Type="Self.Adopcions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animals">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Adopcions">
+              <PropertyRef Name="animalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Adopcions_dbo_EstadoAdopcions_estadoAdopcionId">
+          <End Role="EstadoAdopcions" Type="Self.EstadoAdopcions" Multiplicity="0..1" />
+          <End Role="Adopcions" Type="Self.Adopcions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoAdopcions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Adopcions">
+              <PropertyRef Name="estadoAdopcionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Adopcions_dbo_Personas_empleadoId">
+          <End Role="Personas" Type="Self.Personas" Multiplicity="0..1" />
+          <End Role="Adopcions" Type="Self.Adopcions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Adopcions">
+              <PropertyRef Name="empleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Adopcions_dbo_Personas_voluntarioId">
+          <End Role="Personas" Type="Self.Personas" Multiplicity="0..1" />
+          <End Role="Adopcions" Type="Self.Adopcions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Adopcions">
+              <PropertyRef Name="voluntarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Adopcions_dbo_TipoAdopcions_tipoAdopcionId">
+          <End Role="TipoAdopcions" Type="Self.TipoAdopcions" Multiplicity="0..1" />
+          <End Role="Adopcions" Type="Self.Adopcions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoAdopcions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Adopcions">
+              <PropertyRef Name="tipoAdopcionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Animals_dbo_Razas_razaId">
+          <End Role="Razas" Type="Self.Razas" Multiplicity="0..1" />
+          <End Role="Animals" Type="Self.Animals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Razas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Animals">
+              <PropertyRef Name="razaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Animals_dbo_Tamanios_tamanioId">
+          <End Role="Tamanios" Type="Self.Tamanios" Multiplicity="0..1" />
+          <End Role="Animals" Type="Self.Animals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tamanios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Animals">
+              <PropertyRef Name="tamanioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Apadrinamientoes_dbo_Animals_animalId">
+          <End Role="Animals" Type="Self.Animals" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Apadrinamientoes" Type="Self.Apadrinamientoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animals">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Apadrinamientoes">
+              <PropertyRef Name="animalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Apadrinamientoes_dbo_EstadoApadrinamientoes_estadoApadrinamientoId">
+          <End Role="EstadoApadrinamientoes" Type="Self.EstadoApadrinamientoes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Apadrinamientoes" Type="Self.Apadrinamientoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoApadrinamientoes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Apadrinamientoes">
+              <PropertyRef Name="estadoApadrinamientoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Apadrinamientoes_dbo_Personas_empleadoId">
+          <End Role="Personas" Type="Self.Personas" Multiplicity="0..1" />
+          <End Role="Apadrinamientoes" Type="Self.Apadrinamientoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Apadrinamientoes">
+              <PropertyRef Name="empleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Apadrinamientoes_dbo_Personas_voluntarioId">
+          <End Role="Personas" Type="Self.Personas" Multiplicity="0..1" />
+          <End Role="Apadrinamientoes" Type="Self.Apadrinamientoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Apadrinamientoes">
+              <PropertyRef Name="voluntarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AtencionMedicas_dbo_Animals_animalId">
+          <End Role="Animals" Type="Self.Animals" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AtencionMedicas" Type="Self.AtencionMedicas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animals">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AtencionMedicas">
+              <PropertyRef Name="animalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AtencionMedicas_dbo_ProductoVeterinarias_productoVeterinariaId">
+          <End Role="ProductoVeterinarias" Type="Self.ProductoVeterinarias" Multiplicity="0..1" />
+          <End Role="AtencionMedicas" Type="Self.AtencionMedicas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductoVeterinarias">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AtencionMedicas">
+              <PropertyRef Name="productoVeterinariaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AtencionMedicas_dbo_Veterinarias_veterinariaId">
+          <End Role="Veterinarias" Type="Self.Veterinarias" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AtencionMedicas" Type="Self.AtencionMedicas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Veterinarias">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AtencionMedicas">
+              <PropertyRef Name="veterinariaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Barrios_dbo_Localidads_localidadId">
+          <End Role="Localidades" Type="Self.Localidades" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Barrios" Type="Self.Barrios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Localidades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Barrios">
+              <PropertyRef Name="localidadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Calles_dbo_Localidads_localidadId">
+          <End Role="Localidades" Type="Self.Localidades" Multiplicity="1" />
+          <End Role="Calles" Type="Self.Calles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Localidades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Calles">
+              <PropertyRef Name="localidadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Direcciones_dbo_Barrios_barrioId">
+          <End Role="Barrios" Type="Self.Barrios" Multiplicity="1" />
+          <End Role="Direcciones" Type="Self.Direcciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Barrios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Direcciones">
+              <PropertyRef Name="barrioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Direcciones_dbo_Incidentes_incidenteId">
+          <End Role="Incidentes" Type="Self.Incidentes" Multiplicity="0..1" />
+          <End Role="Direcciones" Type="Self.Direcciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Incidentes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Direcciones">
+              <PropertyRef Name="incidenteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Direcciones_dbo_Localidades_localidadId">
+          <End Role="Localidades" Type="Self.Localidades" Multiplicity="1" />
+          <End Role="Direcciones" Type="Self.Direcciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Localidades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Direcciones">
+              <PropertyRef Name="localidadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Direcciones_dbo_Paises_paisId">
+          <End Role="Paises" Type="Self.Paises" Multiplicity="1" />
+          <End Role="Direcciones" Type="Self.Direcciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paises">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Direcciones">
+              <PropertyRef Name="paisId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Direcciones_dbo_Personas_personaId">
+          <End Role="Personas" Type="Self.Personas" Multiplicity="0..1" />
+          <End Role="Direcciones" Type="Self.Direcciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Direcciones">
+              <PropertyRef Name="personaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Direcciones_dbo_Provincias_provinciaId">
+          <End Role="Provincias" Type="Self.Provincias" Multiplicity="1" />
+          <End Role="Direcciones" Type="Self.Direcciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincias">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Direcciones">
+              <PropertyRef Name="provinciaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Direcciones_dbo_Veterinarias_veterinariaId">
+          <End Role="Veterinarias" Type="Self.Veterinarias" Multiplicity="0..1" />
+          <End Role="Direcciones" Type="Self.Direcciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Veterinarias">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Direcciones">
+              <PropertyRef Name="veterinariaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_FilePaths_dbo_Animals_animalId">
+          <End Role="Animals" Type="Self.Animals" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FilePaths" Type="Self.FilePaths" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animals">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FilePaths">
+              <PropertyRef Name="animalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Files_dbo_Animals_animalId">
+          <End Role="Animals" Type="Self.Animals" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Files" Type="Self.Files" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animals">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Files">
+              <PropertyRef Name="animalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Files_dbo_Incidentes_Incidente_Id">
+          <End Role="Incidentes" Type="Self.Incidentes" Multiplicity="0..1" />
+          <End Role="Files" Type="Self.Files" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Incidentes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Files">
+              <PropertyRef Name="Incidente_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Incidentes_dbo_Barrios_barrioId">
+          <End Role="Barrios" Type="Self.Barrios" Multiplicity="0..1" />
+          <End Role="Incidentes" Type="Self.Incidentes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Barrios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Incidentes">
+              <PropertyRef Name="barrioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Incidentes_dbo_EstadoIncidentes_estadoIncidenteId">
+          <End Role="EstadoIncidentes" Type="Self.EstadoIncidentes" Multiplicity="0..1" />
+          <End Role="Incidentes" Type="Self.Incidentes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoIncidentes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Incidentes">
+              <PropertyRef Name="estadoIncidenteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Incidentes_dbo_Personas_voluntarioId">
+          <End Role="Personas" Type="Self.Personas" Multiplicity="0..1" />
+          <End Role="Incidentes" Type="Self.Incidentes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Incidentes">
+              <PropertyRef Name="voluntarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Incidentes_dbo_Razas_razaId">
+          <End Role="Razas" Type="Self.Razas" Multiplicity="0..1" />
+          <End Role="Incidentes" Type="Self.Incidentes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Razas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Incidentes">
+              <PropertyRef Name="razaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Incidentes_dbo_Tamanios_tamanioId">
+          <End Role="Tamanios" Type="Self.Tamanios" Multiplicity="0..1" />
+          <End Role="Incidentes" Type="Self.Incidentes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tamanios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Incidentes">
+              <PropertyRef Name="tamanioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Incidentes_dbo_TipoIncidentes_tipoIncidenteId">
+          <End Role="TipoIncidentes" Type="Self.TipoIncidentes" Multiplicity="0..1" />
+          <End Role="Incidentes" Type="Self.Incidentes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoIncidentes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Incidentes">
+              <PropertyRef Name="tipoIncidenteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Localidads_dbo_Provincias_provinciaId">
+          <End Role="Provincias" Type="Self.Provincias" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Localidades" Type="Self.Localidades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincias">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Localidades">
+              <PropertyRef Name="provinciaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Provincias_dbo_Paises_paisId">
+          <End Role="Paises" Type="Self.Paises" Multiplicity="0..1" />
+          <End Role="Provincias" Type="Self.Provincias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paises">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Provincias">
+              <PropertyRef Name="paisId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Razas_dbo_Especies_especieID">
+          <End Role="Especies" Type="Self.Especies" Multiplicity="0..1" />
+          <End Role="Razas" Type="Self.Razas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Especies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Razas">
+              <PropertyRef Name="especieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_RegistroAcciones_dbo_Acciones_accionesId">
+          <End Role="Acciones" Type="Self.Acciones" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RegistroAcciones" Type="Self.RegistroAcciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Acciones">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RegistroAcciones">
+              <PropertyRef Name="accionesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_RegistroAcciones_dbo_Personas_personaId">
+          <End Role="Personas" Type="Self.Personas" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RegistroAcciones" Type="Self.RegistroAcciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RegistroAcciones">
+              <PropertyRef Name="personaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HpAerDbModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Acciones" EntityType="Self.Acciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Adopcions" EntityType="Self.Adopcions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Animals" EntityType="Self.Animals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Apadrinamientoes" EntityType="Self.Apadrinamientoes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AtencionMedicas" EntityType="Self.AtencionMedicas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Barrios" EntityType="Self.Barrios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Calles" EntityType="Self.Calles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Direcciones" EntityType="Self.Direcciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Especies" EntityType="Self.Especies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EstadoAdopcions" EntityType="Self.EstadoAdopcions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EstadoApadrinamientoes" EntityType="Self.EstadoApadrinamientoes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EstadoIncidentes" EntityType="Self.EstadoIncidentes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FecParam" EntityType="Self.FecParam" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FileIncidentes" EntityType="Self.FileIncidentes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FilePaths" EntityType="Self.FilePaths" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Files" EntityType="Self.Files" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Incidentes" EntityType="Self.Incidentes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Localidades" EntityType="Self.Localidades" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Paises" EntityType="Self.Paises" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Personas" EntityType="Self.Personas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductoVeterinarias" EntityType="Self.ProductoVeterinarias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Provincias" EntityType="Self.Provincias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Razas" EntityType="Self.Razas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegistroAcciones" EntityType="Self.RegistroAcciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tamanios" EntityType="Self.Tamanios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoAdopcions" EntityType="Self.TipoAdopcions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoIncidentes" EntityType="Self.TipoIncidentes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Veterinarias" EntityType="Self.Veterinarias" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_Adopcions_dbo_Animals_animalId" Association="Self.FK_dbo_Adopcions_dbo_Animals_animalId">
+            <End Role="Animals" EntitySet="Animals" />
+            <End Role="Adopcions" EntitySet="Adopcions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Adopcions_dbo_EstadoAdopcions_estadoAdopcionId" Association="Self.FK_dbo_Adopcions_dbo_EstadoAdopcions_estadoAdopcionId">
+            <End Role="EstadoAdopcions" EntitySet="EstadoAdopcions" />
+            <End Role="Adopcions" EntitySet="Adopcions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Adopcions_dbo_Personas_empleadoId" Association="Self.FK_dbo_Adopcions_dbo_Personas_empleadoId">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="Adopcions" EntitySet="Adopcions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Adopcions_dbo_Personas_voluntarioId" Association="Self.FK_dbo_Adopcions_dbo_Personas_voluntarioId">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="Adopcions" EntitySet="Adopcions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Adopcions_dbo_TipoAdopcions_tipoAdopcionId" Association="Self.FK_dbo_Adopcions_dbo_TipoAdopcions_tipoAdopcionId">
+            <End Role="TipoAdopcions" EntitySet="TipoAdopcions" />
+            <End Role="Adopcions" EntitySet="Adopcions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Animals_dbo_Razas_razaId" Association="Self.FK_dbo_Animals_dbo_Razas_razaId">
+            <End Role="Razas" EntitySet="Razas" />
+            <End Role="Animals" EntitySet="Animals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Animals_dbo_Tamanios_tamanioId" Association="Self.FK_dbo_Animals_dbo_Tamanios_tamanioId">
+            <End Role="Tamanios" EntitySet="Tamanios" />
+            <End Role="Animals" EntitySet="Animals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Apadrinamientoes_dbo_Animals_animalId" Association="Self.FK_dbo_Apadrinamientoes_dbo_Animals_animalId">
+            <End Role="Animals" EntitySet="Animals" />
+            <End Role="Apadrinamientoes" EntitySet="Apadrinamientoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Apadrinamientoes_dbo_EstadoApadrinamientoes_estadoApadrinamientoId" Association="Self.FK_dbo_Apadrinamientoes_dbo_EstadoApadrinamientoes_estadoApadrinamientoId">
+            <End Role="EstadoApadrinamientoes" EntitySet="EstadoApadrinamientoes" />
+            <End Role="Apadrinamientoes" EntitySet="Apadrinamientoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Apadrinamientoes_dbo_Personas_empleadoId" Association="Self.FK_dbo_Apadrinamientoes_dbo_Personas_empleadoId">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="Apadrinamientoes" EntitySet="Apadrinamientoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Apadrinamientoes_dbo_Personas_voluntarioId" Association="Self.FK_dbo_Apadrinamientoes_dbo_Personas_voluntarioId">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="Apadrinamientoes" EntitySet="Apadrinamientoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AtencionMedicas_dbo_Animals_animalId" Association="Self.FK_dbo_AtencionMedicas_dbo_Animals_animalId">
+            <End Role="Animals" EntitySet="Animals" />
+            <End Role="AtencionMedicas" EntitySet="AtencionMedicas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AtencionMedicas_dbo_ProductoVeterinarias_productoVeterinariaId" Association="Self.FK_dbo_AtencionMedicas_dbo_ProductoVeterinarias_productoVeterinariaId">
+            <End Role="ProductoVeterinarias" EntitySet="ProductoVeterinarias" />
+            <End Role="AtencionMedicas" EntitySet="AtencionMedicas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AtencionMedicas_dbo_Veterinarias_veterinariaId" Association="Self.FK_dbo_AtencionMedicas_dbo_Veterinarias_veterinariaId">
+            <End Role="Veterinarias" EntitySet="Veterinarias" />
+            <End Role="AtencionMedicas" EntitySet="AtencionMedicas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Barrios_dbo_Localidads_localidadId" Association="Self.FK_dbo_Barrios_dbo_Localidads_localidadId">
+            <End Role="Localidades" EntitySet="Localidades" />
+            <End Role="Barrios" EntitySet="Barrios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Calles_dbo_Localidads_localidadId" Association="Self.FK_dbo_Calles_dbo_Localidads_localidadId">
+            <End Role="Localidades" EntitySet="Localidades" />
+            <End Role="Calles" EntitySet="Calles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Direcciones_dbo_Barrios_barrioId" Association="Self.FK_dbo_Direcciones_dbo_Barrios_barrioId">
+            <End Role="Barrios" EntitySet="Barrios" />
+            <End Role="Direcciones" EntitySet="Direcciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Direcciones_dbo_Incidentes_incidenteId" Association="Self.FK_dbo_Direcciones_dbo_Incidentes_incidenteId">
+            <End Role="Incidentes" EntitySet="Incidentes" />
+            <End Role="Direcciones" EntitySet="Direcciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Direcciones_dbo_Localidades_localidadId" Association="Self.FK_dbo_Direcciones_dbo_Localidades_localidadId">
+            <End Role="Localidades" EntitySet="Localidades" />
+            <End Role="Direcciones" EntitySet="Direcciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Direcciones_dbo_Paises_paisId" Association="Self.FK_dbo_Direcciones_dbo_Paises_paisId">
+            <End Role="Paises" EntitySet="Paises" />
+            <End Role="Direcciones" EntitySet="Direcciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Direcciones_dbo_Personas_personaId" Association="Self.FK_dbo_Direcciones_dbo_Personas_personaId">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="Direcciones" EntitySet="Direcciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Direcciones_dbo_Provincias_provinciaId" Association="Self.FK_dbo_Direcciones_dbo_Provincias_provinciaId">
+            <End Role="Provincias" EntitySet="Provincias" />
+            <End Role="Direcciones" EntitySet="Direcciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Direcciones_dbo_Veterinarias_veterinariaId" Association="Self.FK_dbo_Direcciones_dbo_Veterinarias_veterinariaId">
+            <End Role="Veterinarias" EntitySet="Veterinarias" />
+            <End Role="Direcciones" EntitySet="Direcciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_FilePaths_dbo_Animals_animalId" Association="Self.FK_dbo_FilePaths_dbo_Animals_animalId">
+            <End Role="Animals" EntitySet="Animals" />
+            <End Role="FilePaths" EntitySet="FilePaths" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Files_dbo_Animals_animalId" Association="Self.FK_dbo_Files_dbo_Animals_animalId">
+            <End Role="Animals" EntitySet="Animals" />
+            <End Role="Files" EntitySet="Files" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Files_dbo_Incidentes_Incidente_Id" Association="Self.FK_dbo_Files_dbo_Incidentes_Incidente_Id">
+            <End Role="Incidentes" EntitySet="Incidentes" />
+            <End Role="Files" EntitySet="Files" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Incidentes_dbo_Barrios_barrioId" Association="Self.FK_dbo_Incidentes_dbo_Barrios_barrioId">
+            <End Role="Barrios" EntitySet="Barrios" />
+            <End Role="Incidentes" EntitySet="Incidentes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Incidentes_dbo_EstadoIncidentes_estadoIncidenteId" Association="Self.FK_dbo_Incidentes_dbo_EstadoIncidentes_estadoIncidenteId">
+            <End Role="EstadoIncidentes" EntitySet="EstadoIncidentes" />
+            <End Role="Incidentes" EntitySet="Incidentes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Incidentes_dbo_Personas_voluntarioId" Association="Self.FK_dbo_Incidentes_dbo_Personas_voluntarioId">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="Incidentes" EntitySet="Incidentes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Incidentes_dbo_Razas_razaId" Association="Self.FK_dbo_Incidentes_dbo_Razas_razaId">
+            <End Role="Razas" EntitySet="Razas" />
+            <End Role="Incidentes" EntitySet="Incidentes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Incidentes_dbo_Tamanios_tamanioId" Association="Self.FK_dbo_Incidentes_dbo_Tamanios_tamanioId">
+            <End Role="Tamanios" EntitySet="Tamanios" />
+            <End Role="Incidentes" EntitySet="Incidentes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Incidentes_dbo_TipoIncidentes_tipoIncidenteId" Association="Self.FK_dbo_Incidentes_dbo_TipoIncidentes_tipoIncidenteId">
+            <End Role="TipoIncidentes" EntitySet="TipoIncidentes" />
+            <End Role="Incidentes" EntitySet="Incidentes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Localidads_dbo_Provincias_provinciaId" Association="Self.FK_dbo_Localidads_dbo_Provincias_provinciaId">
+            <End Role="Provincias" EntitySet="Provincias" />
+            <End Role="Localidades" EntitySet="Localidades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Provincias_dbo_Paises_paisId" Association="Self.FK_dbo_Provincias_dbo_Paises_paisId">
+            <End Role="Paises" EntitySet="Paises" />
+            <End Role="Provincias" EntitySet="Provincias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Razas_dbo_Especies_especieID" Association="Self.FK_dbo_Razas_dbo_Especies_especieID">
+            <End Role="Especies" EntitySet="Especies" />
+            <End Role="Razas" EntitySet="Razas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_RegistroAcciones_dbo_Acciones_accionesId" Association="Self.FK_dbo_RegistroAcciones_dbo_Acciones_accionesId">
+            <End Role="Acciones" EntitySet="Acciones" />
+            <End Role="RegistroAcciones" EntitySet="RegistroAcciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_RegistroAcciones_dbo_Personas_personaId" Association="Self.FK_dbo_RegistroAcciones_dbo_Personas_personaId">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="RegistroAcciones" EntitySet="RegistroAcciones" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HpAerDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Accione">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="isSelected" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="RegistroAcciones" Relationship="Self.FK_dbo_RegistroAcciones_dbo_Acciones_accionesId" FromRole="Acciones" ToRole="RegistroAcciones" />
+        </EntityType>
+        <EntityType Name="Adopcion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="empleadoId" Type="Int32" />
+          <Property Name="voluntarioId" Type="Int32" />
+          <Property Name="animalId" Type="Int32" />
+          <Property Name="fechaAlta" Type="DateTime" Precision="3" />
+          <Property Name="fechaCancelacion" Type="DateTime" Precision="3" />
+          <Property Name="fechaConfirmacion" Type="DateTime" Precision="3" />
+          <Property Name="dias" Type="Int32" />
+          <Property Name="fechaFin" Type="DateTime" Precision="3" />
+          <Property Name="fechaEntrega" Type="DateTime" Precision="3" />
+          <Property Name="esTemporal" Type="Boolean" Nullable="false" />
+          <Property Name="estadoAdopcionId" Type="Int32" />
+          <Property Name="tipoAdopcionId" Type="Int32" />
+          <Property Name="direccionId" Type="Int32" />
+          <Property Name="VoluntarioUsrId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="EmpleadoUsrId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="empleadoName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="voluntarioName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EstadoAdopcion" Relationship="Self.FK_dbo_Adopcions_dbo_EstadoAdopcions_estadoAdopcionId" FromRole="Adopcions" ToRole="EstadoAdopcions" />
+          <NavigationProperty Name="TipoAdopcion" Relationship="Self.FK_dbo_Adopcions_dbo_TipoAdopcions_tipoAdopcionId" FromRole="Adopcions" ToRole="TipoAdopcions" />
+          <NavigationProperty Name="Animal" Relationship="HpAerDbModel.FK_dbo_Adopcions_dbo_Animals_animalId" FromRole="Adopcion" ToRole="Animal" />
+          <NavigationProperty Name="Persona" Relationship="HpAerDbModel.FK_dbo_Adopcions_dbo_Personas_empleadoId" FromRole="Adopcion" ToRole="Persona" />
+          <NavigationProperty Name="Persona1" Relationship="HpAerDbModel.FK_dbo_Adopcions_dbo_Personas_voluntarioId" FromRole="Adopcion" ToRole="Persona" />
+          </EntityType>
+        <EntityType Name="Apadrinamiento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="empleadoId" Type="Int32" />
+          <Property Name="voluntarioId" Type="Int32" />
+          <Property Name="animalId" Type="Int32" Nullable="false" />
+          <Property Name="fechaAlta" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fechaCancelacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fechaConfirmacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fechaBaja" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="importe" Type="Single" Nullable="false" />
+          <Property Name="estadoApadrinamientoId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EstadoApadrinamiento" Relationship="Self.FK_dbo_Apadrinamientoes_dbo_EstadoApadrinamientoes_estadoApadrinamientoId" FromRole="Apadrinamientoes" ToRole="EstadoApadrinamientoes" />
+          <NavigationProperty Name="Animal" Relationship="HpAerDbModel.FK_dbo_Apadrinamientoes_dbo_Animals_animalId" FromRole="Apadrinamiento" ToRole="Animal" />
+          <NavigationProperty Name="Persona" Relationship="HpAerDbModel.FK_dbo_Apadrinamientoes_dbo_Personas_empleadoId" FromRole="Apadrinamiento" ToRole="Persona" />
+          <NavigationProperty Name="Persona1" Relationship="HpAerDbModel.FK_dbo_Apadrinamientoes_dbo_Personas_voluntarioId" FromRole="Apadrinamiento" ToRole="Persona" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ConfirmedEmail" Type="Boolean" Nullable="false" />
+          <Property Name="nombreUsuario" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="AtencionMedica">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="animalId" Type="Int32" Nullable="false" />
+          <Property Name="veterinariaId" Type="Int32" Nullable="false" />
+          <Property Name="productoVeterinariaId" Type="Int32" />
+          <Property Name="tratamiento" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nombreVeterinario" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fechaBaja" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ProductoVeterinaria" Relationship="Self.FK_dbo_AtencionMedicas_dbo_ProductoVeterinarias_productoVeterinariaId" FromRole="AtencionMedicas" ToRole="ProductoVeterinarias" />
+          <NavigationProperty Name="Veterinaria" Relationship="Self.FK_dbo_AtencionMedicas_dbo_Veterinarias_veterinariaId" FromRole="AtencionMedicas" ToRole="Veterinarias" />
+          <NavigationProperty Name="Animal" Relationship="HpAerDbModel.FK_dbo_AtencionMedicas_dbo_Animals_animalId" FromRole="AtencionMedica" ToRole="Animal" />
+        </EntityType>
+        <EntityType Name="Barrio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="codigoPostal" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="localidadId" Type="Int32" Nullable="false" />
+          <Property Name="Zona" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Incidentes" Relationship="Self.FK_dbo_Incidentes_dbo_Barrios_barrioId" FromRole="Barrios" ToRole="Incidentes" />
+          <NavigationProperty Name="Localidade" Relationship="HpAerDbModel.FK_dbo_Barrios_dbo_Localidads_localidadId" FromRole="Barrio" ToRole="Localidade" />
+          <NavigationProperty Name="Direcciones" Relationship="HpAerDbModel.FK_dbo_Direcciones_dbo_Barrios_barrioId" FromRole="Barrio" ToRole="Direccione" />
+        </EntityType>
+        <EntityType Name="Especy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="fechaBaja" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Razas" Relationship="Self.FK_dbo_Razas_dbo_Especies_especieID" FromRole="Especies" ToRole="Razas" />
+          <Property Name="estadoHab" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="EstadoAdopcion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Adopcions" Relationship="Self.FK_dbo_Adopcions_dbo_EstadoAdopcions_estadoAdopcionId" FromRole="EstadoAdopcions" ToRole="Adopcions" />
+        </EntityType>
+        <EntityType Name="EstadoApadrinamiento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Apadrinamientoes" Relationship="Self.FK_dbo_Apadrinamientoes_dbo_EstadoApadrinamientoes_estadoApadrinamientoId" FromRole="EstadoApadrinamientoes" ToRole="Apadrinamientoes" />
+        </EntityType>
+        <EntityType Name="EstadoIncidente">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="estadoInc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Incidentes" Relationship="Self.FK_dbo_Incidentes_dbo_EstadoIncidentes_estadoIncidenteId" FromRole="EstadoIncidentes" ToRole="Incidentes" />
+        </EntityType>
+        <EntityType Name="FecParam">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="fecha_desde" Type="DateTime" Precision="0" />
+          <Property Name="fecha_hasta" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="FileIncidente">
+          <Key>
+            <PropertyRef Name="FileIncidenteId" />
+          </Key>
+          <Property Name="FileIncidenteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ContentType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Content" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="FileType" Type="Int32" Nullable="false" />
+          <Property Name="incidentelId" Type="Int32" Nullable="false" />
+          <Property Name="incidente_Id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="FilePath">
+          <Key>
+            <PropertyRef Name="FilePathId" />
+          </Key>
+          <Property Name="FilePathId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FileType" Type="Int32" Nullable="false" />
+          <Property Name="animalId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Animal" Relationship="HpAerDbModel.FK_dbo_FilePaths_dbo_Animals_animalId" FromRole="FilePath" ToRole="Animal" />
+        </EntityType>
+        <EntityType Name="File">
+          <Key>
+            <PropertyRef Name="FileId" />
+          </Key>
+          <Property Name="FileId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ContentType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Content" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="FileType" Type="Int32" Nullable="false" />
+          <Property Name="animalId" Type="Int32" Nullable="false" />
+          <Property Name="Incidente_Id" Type="Int32" />
+          <NavigationProperty Name="Incidente" Relationship="Self.FK_dbo_Files_dbo_Incidentes_Incidente_Id" FromRole="Files" ToRole="Incidentes" />
+          <NavigationProperty Name="Animal" Relationship="HpAerDbModel.FK_dbo_Files_dbo_Animals_animalId" FromRole="File" ToRole="Animal" />
+        </EntityType>
+        <EntityType Name="Incidente">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="tamanioId" Type="Int32" />
+          <Property Name="razaId" Type="Int32" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fechaFin" Type="DateTime" Precision="3" />
+          <Property Name="fechaAlta" Type="DateTime" Precision="3" />
+          <Property Name="fechaBaja" Type="DateTime" Precision="3" />
+          <Property Name="tipoIncidenteId" Type="Int32" />
+          <Property Name="especieId" Type="Int32" />
+          <Property Name="estadoIncidenteId" Type="Int32" />
+          <Property Name="VoluntarioUsrId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="voluntarioName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="voluntarioId" Type="Int32" />
+          <Property Name="calle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="lat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="lng" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="VoluntarioSolucionUsrId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="voluntarioSolucionName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="barrioId" Type="Int32" />
+          <NavigationProperty Name="Barrio" Relationship="Self.FK_dbo_Incidentes_dbo_Barrios_barrioId" FromRole="Incidentes" ToRole="Barrios" />
+          <NavigationProperty Name="EstadoIncidente" Relationship="Self.FK_dbo_Incidentes_dbo_EstadoIncidentes_estadoIncidenteId" FromRole="Incidentes" ToRole="EstadoIncidentes" />
+          <NavigationProperty Name="Files" Relationship="Self.FK_dbo_Files_dbo_Incidentes_Incidente_Id" FromRole="Incidentes" ToRole="Files" />
+          <NavigationProperty Name="Raza" Relationship="Self.FK_dbo_Incidentes_dbo_Razas_razaId" FromRole="Incidentes" ToRole="Razas" />
+          <NavigationProperty Name="Tamanio" Relationship="Self.FK_dbo_Incidentes_dbo_Tamanios_tamanioId" FromRole="Incidentes" ToRole="Tamanios" />
+          <NavigationProperty Name="TipoIncidente" Relationship="Self.FK_dbo_Incidentes_dbo_TipoIncidentes_tipoIncidenteId" FromRole="Incidentes" ToRole="TipoIncidentes" />
+          <NavigationProperty Name="Direcciones" Relationship="HpAerDbModel.FK_dbo_Direcciones_dbo_Incidentes_incidenteId" FromRole="Incidente" ToRole="Direccion" />
+          <NavigationProperty Name="Persona" Relationship="HpAerDbModel.FK_dbo_Incidentes_dbo_Personas_voluntarioId" FromRole="Incidente" ToRole="Persona" />
+        </EntityType>
+        <EntityType Name="Pais">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pais_nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Provincias" Relationship="Self.FK_dbo_Provincias_dbo_Paises_paisId" FromRole="Paises" ToRole="Provincias" />
+          <NavigationProperty Name="Direcciones" Relationship="HpAerDbModel.FK_dbo_Direcciones_dbo_Paises_paisId" FromRole="Pais" ToRole="Direccione" />
+          <Property Name="pais_habil" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ProductoVeterinaria">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cantidad" Type="Int32" />
+          <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fechaBaja" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AtencionMedicas" Relationship="Self.FK_dbo_AtencionMedicas_dbo_ProductoVeterinarias_productoVeterinariaId" FromRole="ProductoVeterinarias" ToRole="AtencionMedicas" />
+        </EntityType>
+        <EntityType Name="Provincia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="paisId" Type="Int32" />
+          <NavigationProperty Name="Pais" Relationship="Self.FK_dbo_Provincias_dbo_Paises_paisId" FromRole="Provincias" ToRole="Paises" />
+          <NavigationProperty Name="Localidades" Relationship="HpAerDbModel.FK_dbo_Localidads_dbo_Provincias_provinciaId" FromRole="Provincia" ToRole="Localidade" />
+          <NavigationProperty Name="Direcciones" Relationship="HpAerDbModel.FK_dbo_Direcciones_dbo_Provincias_provinciaId" FromRole="Provincia" ToRole="Direccione" />
+        </EntityType>
+        <EntityType Name="Raza">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="especieID" Type="Int32" />
+          <Property Name="fechaBaja" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Especy" Relationship="Self.FK_dbo_Razas_dbo_Especies_especieID" FromRole="Razas" ToRole="Especies" />
+          <NavigationProperty Name="Incidentes" Relationship="Self.FK_dbo_Incidentes_dbo_Razas_razaId" FromRole="Razas" ToRole="Incidentes" />
+          <NavigationProperty Name="Animals" Relationship="HpAerDbModel.FK_dbo_Animals_dbo_Razas_razaId" FromRole="Raza" ToRole="Animal" />
+          <Property Name="estadoHab" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="RegistroAccione">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fechaAlta" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fechcaBaja" Type="DateTime" Precision="3" />
+          <Property Name="comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="personaId" Type="Int32" Nullable="false" />
+          <Property Name="accionesId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Accione" Relationship="Self.FK_dbo_RegistroAcciones_dbo_Acciones_accionesId" FromRole="RegistroAcciones" ToRole="Acciones" />
+          <NavigationProperty Name="Persona" Relationship="HpAerDbModel.FK_dbo_RegistroAcciones_dbo_Personas_personaId" FromRole="RegistroAccione" ToRole="Persona" />
+          <Property Name="estadoHab" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tamanio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="fechaBaja" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Incidentes" Relationship="Self.FK_dbo_Incidentes_dbo_Tamanios_tamanioId" FromRole="Tamanios" ToRole="Incidentes" />
+          <NavigationProperty Name="Animals" Relationship="HpAerDbModel.FK_dbo_Animals_dbo_Tamanios_tamanioId" FromRole="Tamanio" ToRole="Animal" />
+        </EntityType>
+        <EntityType Name="TipoAdopcion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipoAdopcion1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Adopcions" Relationship="Self.FK_dbo_Adopcions_dbo_TipoAdopcions_tipoAdopcionId" FromRole="TipoAdopcions" ToRole="Adopcions" />
+        </EntityType>
+        <EntityType Name="TipoIncidente">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipoIncidente1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Incidentes" Relationship="Self.FK_dbo_Incidentes_dbo_TipoIncidentes_tipoIncidenteId" FromRole="TipoIncidentes" ToRole="Incidentes" />
+        </EntityType>
+        <EntityType Name="Veterinaria">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fechaBaja" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AtencionMedicas" Relationship="Self.FK_dbo_AtencionMedicas_dbo_Veterinarias_veterinariaId" FromRole="Veterinarias" ToRole="AtencionMedicas" />
+          <NavigationProperty Name="Direcciones" Relationship="HpAerDbModel.FK_dbo_Direcciones_dbo_Veterinarias_veterinariaId" FromRole="Veterinaria" ToRole="Direccion" />
+        </EntityType>
+        <Association Name="FK_dbo_RegistroAcciones_dbo_Acciones_accionesId">
+          <End Role="Acciones" Type="Self.Accione" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RegistroAcciones" Type="Self.RegistroAccione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Acciones">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RegistroAcciones">
+              <PropertyRef Name="accionesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Adopcions_dbo_EstadoAdopcions_estadoAdopcionId">
+          <End Role="EstadoAdopcions" Type="Self.EstadoAdopcion" Multiplicity="0..1" />
+          <End Role="Adopcions" Type="Self.Adopcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoAdopcions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Adopcions">
+              <PropertyRef Name="estadoAdopcionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Adopcions_dbo_TipoAdopcions_tipoAdopcionId">
+          <End Role="TipoAdopcions" Type="Self.TipoAdopcion" Multiplicity="0..1" />
+          <End Role="Adopcions" Type="Self.Adopcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoAdopcions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Adopcions">
+              <PropertyRef Name="tipoAdopcionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Apadrinamientoes_dbo_EstadoApadrinamientoes_estadoApadrinamientoId">
+          <End Role="EstadoApadrinamientoes" Type="Self.EstadoApadrinamiento" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Apadrinamientoes" Type="Self.Apadrinamiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoApadrinamientoes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Apadrinamientoes">
+              <PropertyRef Name="estadoApadrinamientoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AtencionMedicas_dbo_ProductoVeterinarias_productoVeterinariaId">
+          <End Role="ProductoVeterinarias" Type="Self.ProductoVeterinaria" Multiplicity="0..1" />
+          <End Role="AtencionMedicas" Type="Self.AtencionMedica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductoVeterinarias">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AtencionMedicas">
+              <PropertyRef Name="productoVeterinariaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AtencionMedicas_dbo_Veterinarias_veterinariaId">
+          <End Role="Veterinarias" Type="Self.Veterinaria" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AtencionMedicas" Type="Self.AtencionMedica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Veterinarias">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AtencionMedicas">
+              <PropertyRef Name="veterinariaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Incidentes_dbo_Barrios_barrioId">
+          <End Role="Barrios" Type="Self.Barrio" Multiplicity="0..1" />
+          <End Role="Incidentes" Type="Self.Incidente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Barrios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Incidentes">
+              <PropertyRef Name="barrioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Razas_dbo_Especies_especieID">
+          <End Role="Especies" Type="Self.Especy" Multiplicity="0..1" />
+          <End Role="Razas" Type="Self.Raza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Especies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Razas">
+              <PropertyRef Name="especieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Incidentes_dbo_EstadoIncidentes_estadoIncidenteId">
+          <End Role="EstadoIncidentes" Type="Self.EstadoIncidente" Multiplicity="0..1" />
+          <End Role="Incidentes" Type="Self.Incidente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoIncidentes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Incidentes">
+              <PropertyRef Name="estadoIncidenteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Files_dbo_Incidentes_Incidente_Id">
+          <End Role="Incidentes" Type="Self.Incidente" Multiplicity="0..1" />
+          <End Role="Files" Type="Self.File" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Incidentes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Files">
+              <PropertyRef Name="Incidente_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Incidentes_dbo_Razas_razaId">
+          <End Role="Razas" Type="Self.Raza" Multiplicity="0..1" />
+          <End Role="Incidentes" Type="Self.Incidente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Razas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Incidentes">
+              <PropertyRef Name="razaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Incidentes_dbo_Tamanios_tamanioId">
+          <End Role="Tamanios" Type="Self.Tamanio" Multiplicity="0..1" />
+          <End Role="Incidentes" Type="Self.Incidente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tamanios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Incidentes">
+              <PropertyRef Name="tamanioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Incidentes_dbo_TipoIncidentes_tipoIncidenteId">
+          <End Role="TipoIncidentes" Type="Self.TipoIncidente" Multiplicity="0..1" />
+          <End Role="Incidentes" Type="Self.Incidente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoIncidentes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Incidentes">
+              <PropertyRef Name="tipoIncidenteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Provincias_dbo_Paises_paisId">
+          <End Role="Paises" Type="Self.Pais" Multiplicity="0..1" />
+          <End Role="Provincias" Type="Self.Provincia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paises">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Provincias">
+              <PropertyRef Name="paisId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="HpAerDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="Acciones" EntityType="Self.Accione" />
+          <EntitySet Name="Adopcions" EntityType="Self.Adopcion" />
+          <EntitySet Name="Apadrinamientoes" EntityType="Self.Apadrinamiento" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="AtencionMedicas" EntityType="Self.AtencionMedica" />
+          <EntitySet Name="Barrios" EntityType="Self.Barrio" />
+          <EntitySet Name="Especies" EntityType="Self.Especy" />
+          <EntitySet Name="EstadoAdopcions" EntityType="Self.EstadoAdopcion" />
+          <EntitySet Name="EstadoApadrinamientoes" EntityType="Self.EstadoApadrinamiento" />
+          <EntitySet Name="EstadoIncidentes" EntityType="Self.EstadoIncidente" />
+          <EntitySet Name="FecParams" EntityType="Self.FecParam" />
+          <EntitySet Name="FileIncidentes" EntityType="Self.FileIncidente" />
+          <EntitySet Name="FilePaths" EntityType="Self.FilePath" />
+          <EntitySet Name="Files" EntityType="Self.File" />
+          <EntitySet Name="Incidentes" EntityType="Self.Incidente" />
+          <EntitySet Name="Paises" EntityType="Self.Pais" />
+          <EntitySet Name="ProductoVeterinarias" EntityType="Self.ProductoVeterinaria" />
+          <EntitySet Name="Provincias" EntityType="Self.Provincia" />
+          <EntitySet Name="Razas" EntityType="Self.Raza" />
+          <EntitySet Name="RegistroAcciones" EntityType="Self.RegistroAccione" />
+          <EntitySet Name="Tamanios" EntityType="Self.Tamanio" />
+          <EntitySet Name="TipoAdopcions" EntityType="Self.TipoAdopcion" />
+          <EntitySet Name="TipoIncidentes" EntityType="Self.TipoIncidente" />
+          <EntitySet Name="Veterinarias" EntityType="Self.Veterinaria" />
+          <AssociationSet Name="FK_dbo_RegistroAcciones_dbo_Acciones_accionesId" Association="Self.FK_dbo_RegistroAcciones_dbo_Acciones_accionesId">
+            <End Role="Acciones" EntitySet="Acciones" />
+            <End Role="RegistroAcciones" EntitySet="RegistroAcciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Adopcions_dbo_EstadoAdopcions_estadoAdopcionId" Association="Self.FK_dbo_Adopcions_dbo_EstadoAdopcions_estadoAdopcionId">
+            <End Role="EstadoAdopcions" EntitySet="EstadoAdopcions" />
+            <End Role="Adopcions" EntitySet="Adopcions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Adopcions_dbo_TipoAdopcions_tipoAdopcionId" Association="Self.FK_dbo_Adopcions_dbo_TipoAdopcions_tipoAdopcionId">
+            <End Role="TipoAdopcions" EntitySet="TipoAdopcions" />
+            <End Role="Adopcions" EntitySet="Adopcions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Apadrinamientoes_dbo_EstadoApadrinamientoes_estadoApadrinamientoId" Association="Self.FK_dbo_Apadrinamientoes_dbo_EstadoApadrinamientoes_estadoApadrinamientoId">
+            <End Role="EstadoApadrinamientoes" EntitySet="EstadoApadrinamientoes" />
+            <End Role="Apadrinamientoes" EntitySet="Apadrinamientoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AtencionMedicas_dbo_ProductoVeterinarias_productoVeterinariaId" Association="Self.FK_dbo_AtencionMedicas_dbo_ProductoVeterinarias_productoVeterinariaId">
+            <End Role="ProductoVeterinarias" EntitySet="ProductoVeterinarias" />
+            <End Role="AtencionMedicas" EntitySet="AtencionMedicas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AtencionMedicas_dbo_Veterinarias_veterinariaId" Association="Self.FK_dbo_AtencionMedicas_dbo_Veterinarias_veterinariaId">
+            <End Role="Veterinarias" EntitySet="Veterinarias" />
+            <End Role="AtencionMedicas" EntitySet="AtencionMedicas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Incidentes_dbo_Barrios_barrioId" Association="Self.FK_dbo_Incidentes_dbo_Barrios_barrioId">
+            <End Role="Barrios" EntitySet="Barrios" />
+            <End Role="Incidentes" EntitySet="Incidentes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Razas_dbo_Especies_especieID" Association="Self.FK_dbo_Razas_dbo_Especies_especieID">
+            <End Role="Especies" EntitySet="Especies" />
+            <End Role="Razas" EntitySet="Razas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Incidentes_dbo_EstadoIncidentes_estadoIncidenteId" Association="Self.FK_dbo_Incidentes_dbo_EstadoIncidentes_estadoIncidenteId">
+            <End Role="EstadoIncidentes" EntitySet="EstadoIncidentes" />
+            <End Role="Incidentes" EntitySet="Incidentes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Files_dbo_Incidentes_Incidente_Id" Association="Self.FK_dbo_Files_dbo_Incidentes_Incidente_Id">
+            <End Role="Incidentes" EntitySet="Incidentes" />
+            <End Role="Files" EntitySet="Files" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Incidentes_dbo_Razas_razaId" Association="Self.FK_dbo_Incidentes_dbo_Razas_razaId">
+            <End Role="Razas" EntitySet="Razas" />
+            <End Role="Incidentes" EntitySet="Incidentes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Incidentes_dbo_Tamanios_tamanioId" Association="Self.FK_dbo_Incidentes_dbo_Tamanios_tamanioId">
+            <End Role="Tamanios" EntitySet="Tamanios" />
+            <End Role="Incidentes" EntitySet="Incidentes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Incidentes_dbo_TipoIncidentes_tipoIncidenteId" Association="Self.FK_dbo_Incidentes_dbo_TipoIncidentes_tipoIncidenteId">
+            <End Role="TipoIncidentes" EntitySet="TipoIncidentes" />
+            <End Role="Incidentes" EntitySet="Incidentes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Provincias_dbo_Paises_paisId" Association="Self.FK_dbo_Provincias_dbo_Paises_paisId">
+            <End Role="Paises" EntitySet="Paises" />
+            <End Role="Provincias" EntitySet="Provincias" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <EntitySet Name="Calles" EntityType="HpAerDbModel.Calle" />
+          <EntitySet Name="Animals" EntityType="HpAerDbModel.Animal" />
+          <AssociationSet Name="FK_dbo_Adopcions_dbo_Animals_animalId" Association="HpAerDbModel.FK_dbo_Adopcions_dbo_Animals_animalId">
+            <End Role="Animal" EntitySet="Animals" />
+            <End Role="Adopcion" EntitySet="Adopcions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Animals_dbo_Razas_razaId" Association="HpAerDbModel.FK_dbo_Animals_dbo_Razas_razaId">
+            <End Role="Raza" EntitySet="Razas" />
+            <End Role="Animal" EntitySet="Animals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Animals_dbo_Tamanios_tamanioId" Association="HpAerDbModel.FK_dbo_Animals_dbo_Tamanios_tamanioId">
+            <End Role="Tamanio" EntitySet="Tamanios" />
+            <End Role="Animal" EntitySet="Animals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Apadrinamientoes_dbo_Animals_animalId" Association="HpAerDbModel.FK_dbo_Apadrinamientoes_dbo_Animals_animalId">
+            <End Role="Animal" EntitySet="Animals" />
+            <End Role="Apadrinamiento" EntitySet="Apadrinamientoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AtencionMedicas_dbo_Animals_animalId" Association="HpAerDbModel.FK_dbo_AtencionMedicas_dbo_Animals_animalId">
+            <End Role="Animal" EntitySet="Animals" />
+            <End Role="AtencionMedica" EntitySet="AtencionMedicas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_FilePaths_dbo_Animals_animalId" Association="HpAerDbModel.FK_dbo_FilePaths_dbo_Animals_animalId">
+            <End Role="Animal" EntitySet="Animals" />
+            <End Role="FilePath" EntitySet="FilePaths" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Files_dbo_Animals_animalId" Association="HpAerDbModel.FK_dbo_Files_dbo_Animals_animalId">
+            <End Role="Animal" EntitySet="Animals" />
+            <End Role="File" EntitySet="Files" />
+          </AssociationSet>
+          <EntitySet Name="Localidads" EntityType="HpAerDbModel.Localidad" />
+          <AssociationSet Name="FK_dbo_Barrios_dbo_Localidads_localidadId" Association="HpAerDbModel.FK_dbo_Barrios_dbo_Localidads_localidadId">
+            <End Role="Localidade" EntitySet="Localidads" />
+            <End Role="Barrio" EntitySet="Barrios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Localidads_dbo_Provincias_provinciaId" Association="HpAerDbModel.FK_dbo_Localidads_dbo_Provincias_provinciaId">
+            <End Role="Provincia" EntitySet="Provincias" />
+            <End Role="Localidade" EntitySet="Localidads" />
+          </AssociationSet>
+          <EntitySet Name="Direccions" EntityType="HpAerDbModel.Direccion" />
+          <AssociationSet Name="FK_dbo_Direcciones_dbo_Barrios_barrioId" Association="HpAerDbModel.FK_dbo_Direcciones_dbo_Barrios_barrioId">
+            <End Role="Barrio" EntitySet="Barrios" />
+            <End Role="Direccione" EntitySet="Direccions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Direcciones_dbo_Calles_calleId" Association="HpAerDbModel.FK_dbo_Direcciones_dbo_Calles_calleId">
+            <End Role="Calle" EntitySet="Calles" />
+            <End Role="Direccione" EntitySet="Direccions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Direcciones_dbo_Localidades_localidadId" Association="HpAerDbModel.FK_dbo_Direcciones_dbo_Localidades_localidadId">
+            <End Role="Localidad" EntitySet="Localidads" />
+            <End Role="Direccione" EntitySet="Direccions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Direcciones_dbo_Paises_paisId" Association="HpAerDbModel.FK_dbo_Direcciones_dbo_Paises_paisId">
+            <End Role="Pais" EntitySet="Paises" />
+            <End Role="Direccione" EntitySet="Direccions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Direcciones_dbo_Provincias_provinciaId" Association="HpAerDbModel.FK_dbo_Direcciones_dbo_Provincias_provinciaId">
+            <End Role="Provincia" EntitySet="Provincias" />
+            <End Role="Direccione" EntitySet="Direccions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Calles_dbo_Localidads_localidadId" Association="HpAerDbModel.FK_dbo_Calles_dbo_Localidads_localidadId">
+            <End Role="Localidad" EntitySet="Localidads" />
+            <End Role="Calle" EntitySet="Calles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Direcciones_dbo_Incidentes_incidenteId" Association="HpAerDbModel.FK_dbo_Direcciones_dbo_Incidentes_incidenteId">
+            <End Role="Incidente" EntitySet="Incidentes" />
+            <End Role="Direccion" EntitySet="Direccions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Direcciones_dbo_Veterinarias_veterinariaId" Association="HpAerDbModel.FK_dbo_Direcciones_dbo_Veterinarias_veterinariaId">
+            <End Role="Veterinaria" EntitySet="Veterinarias" />
+            <End Role="Direccion" EntitySet="Direccions" />
+          </AssociationSet>
+          <EntitySet Name="Personas" EntityType="HpAerDbModel.Persona" />
+          <AssociationSet Name="FK_dbo_Adopcions_dbo_Personas_empleadoId" Association="HpAerDbModel.FK_dbo_Adopcions_dbo_Personas_empleadoId">
+            <End Role="Persona" EntitySet="Personas" />
+            <End Role="Adopcion" EntitySet="Adopcions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Adopcions_dbo_Personas_voluntarioId" Association="HpAerDbModel.FK_dbo_Adopcions_dbo_Personas_voluntarioId">
+            <End Role="Persona" EntitySet="Personas" />
+            <End Role="Adopcion" EntitySet="Adopcions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Apadrinamientoes_dbo_Personas_empleadoId" Association="HpAerDbModel.FK_dbo_Apadrinamientoes_dbo_Personas_empleadoId">
+            <End Role="Persona" EntitySet="Personas" />
+            <End Role="Apadrinamiento" EntitySet="Apadrinamientoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Apadrinamientoes_dbo_Personas_voluntarioId" Association="HpAerDbModel.FK_dbo_Apadrinamientoes_dbo_Personas_voluntarioId">
+            <End Role="Persona" EntitySet="Personas" />
+            <End Role="Apadrinamiento" EntitySet="Apadrinamientoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Direcciones_dbo_Personas_personaId" Association="HpAerDbModel.FK_dbo_Direcciones_dbo_Personas_personaId">
+            <End Role="Persona" EntitySet="Personas" />
+            <End Role="Direccion" EntitySet="Direccions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Incidentes_dbo_Personas_voluntarioId" Association="HpAerDbModel.FK_dbo_Incidentes_dbo_Personas_voluntarioId">
+            <End Role="Persona" EntitySet="Personas" />
+            <End Role="Incidente" EntitySet="Incidentes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_RegistroAcciones_dbo_Personas_personaId" Association="HpAerDbModel.FK_dbo_RegistroAcciones_dbo_Personas_personaId">
+            <End Role="Persona" EntitySet="Personas" />
+            <End Role="RegistroAccione" EntitySet="RegistroAcciones" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Calle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="calle_nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Direcciones" Relationship="HpAerDbModel.FK_dbo_Direcciones_dbo_Calles_calleId" FromRole="Calle" ToRole="Direccione" />
+          <Property Name="localidadId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Localidade" Relationship="HpAerDbModel.FK_dbo_Calles_dbo_Localidads_localidadId" FromRole="Calle" ToRole="Localidad" />
+        </EntityType>
+        <EntityType Name="Animal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fechaNac" Type="DateTime" Precision="3" />
+          <Property Name="fechaAlta" Type="DateTime" Nullable="true" Precision="3" />
+          <Property Name="edad" Type="Int32" Nullable="false" />
+          <Property Name="fechaBaja" Type="DateTime" Precision="3" />
+          <Property Name="caracteristicas" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="tamanioId" Type="Int32" />
+          <Property Name="razaId" Type="Int32" />
+          <Property Name="enAdopcion" Type="Boolean" />
+          <NavigationProperty Name="Adopcions" Relationship="HpAerDbModel.FK_dbo_Adopcions_dbo_Animals_animalId" FromRole="Animal" ToRole="Adopcion" />
+          <NavigationProperty Name="Raza" Relationship="HpAerDbModel.FK_dbo_Animals_dbo_Razas_razaId" FromRole="Animal" ToRole="Raza" />
+          <NavigationProperty Name="Tamanio" Relationship="HpAerDbModel.FK_dbo_Animals_dbo_Tamanios_tamanioId" FromRole="Animal" ToRole="Tamanio" />
+          <NavigationProperty Name="Apadrinamientoes" Relationship="HpAerDbModel.FK_dbo_Apadrinamientoes_dbo_Animals_animalId" FromRole="Animal" ToRole="Apadrinamiento" />
+          <NavigationProperty Name="AtencionMedicas" Relationship="HpAerDbModel.FK_dbo_AtencionMedicas_dbo_Animals_animalId" FromRole="Animal" ToRole="AtencionMedica" />
+          <NavigationProperty Name="FilePaths" Relationship="HpAerDbModel.FK_dbo_FilePaths_dbo_Animals_animalId" FromRole="Animal" ToRole="FilePath" />
+          <NavigationProperty Name="Files" Relationship="HpAerDbModel.FK_dbo_Files_dbo_Animals_animalId" FromRole="Animal" ToRole="File" />
+          <Property Name="enTratamiento" Type="Boolean" />
+          <Property Name="estadoHab" Type="Boolean" />
+          <Property Name="fechaAdop" Type="DateTime" Precision="0" />
+          <Property Name="fechaTratamiento" Type="DateTime" Precision="0" />
+        </EntityType>
+        <Association Name="FK_dbo_Adopcions_dbo_Animals_animalId">
+          <End Type="HpAerDbModel.Animal" Role="Animal" Multiplicity="0..1" />
+          <End Type="HpAerDbModel.Adopcion" Role="Adopcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Adopcion">
+              <PropertyRef Name="animalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Animals_dbo_Razas_razaId">
+          <End Type="HpAerDbModel.Raza" Role="Raza" Multiplicity="0..1" />
+          <End Type="HpAerDbModel.Animal" Role="Animal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Raza">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Animal">
+              <PropertyRef Name="razaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Animals_dbo_Tamanios_tamanioId">
+          <End Type="HpAerDbModel.Tamanio" Role="Tamanio" Multiplicity="0..1" />
+          <End Type="HpAerDbModel.Animal" Role="Animal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tamanio">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Animal">
+              <PropertyRef Name="tamanioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Apadrinamientoes_dbo_Animals_animalId">
+          <End Type="HpAerDbModel.Animal" Role="Animal" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="HpAerDbModel.Apadrinamiento" Role="Apadrinamiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Apadrinamiento">
+              <PropertyRef Name="animalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AtencionMedicas_dbo_Animals_animalId">
+          <End Type="HpAerDbModel.Animal" Role="Animal" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="HpAerDbModel.AtencionMedica" Role="AtencionMedica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AtencionMedica">
+              <PropertyRef Name="animalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_FilePaths_dbo_Animals_animalId">
+          <End Type="HpAerDbModel.Animal" Role="Animal" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="HpAerDbModel.FilePath" Role="FilePath" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FilePath">
+              <PropertyRef Name="animalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Files_dbo_Animals_animalId">
+          <End Type="HpAerDbModel.Animal" Role="Animal" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="HpAerDbModel.File" Role="File" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="File">
+              <PropertyRef Name="animalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Localidad">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="provinciaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Barrios" Relationship="HpAerDbModel.FK_dbo_Barrios_dbo_Localidads_localidadId" FromRole="Localidade" ToRole="Barrio" />
+          <NavigationProperty Name="Provincia" Relationship="HpAerDbModel.FK_dbo_Localidads_dbo_Provincias_provinciaId" FromRole="Localidade" ToRole="Provincia" />
+          <NavigationProperty Name="Direcciones" Relationship="HpAerDbModel.FK_dbo_Direcciones_dbo_Localidades_localidadId" FromRole="Localidad" ToRole="Direccione" />
+          <NavigationProperty Name="Calles" Relationship="HpAerDbModel.FK_dbo_Calles_dbo_Localidads_localidadId" FromRole="Localidad" ToRole="Calle" />
+        </EntityType>
+        <Association Name="FK_dbo_Barrios_dbo_Localidads_localidadId">
+          <End Type="HpAerDbModel.Localidad" Role="Localidade" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="HpAerDbModel.Barrio" Role="Barrio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Localidade">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Barrio">
+              <PropertyRef Name="localidadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Localidads_dbo_Provincias_provinciaId">
+          <End Type="HpAerDbModel.Provincia" Role="Provincia" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="HpAerDbModel.Localidad" Role="Localidade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincia">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Localidade">
+              <PropertyRef Name="provinciaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Direccion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="paisId" Type="Int32" Nullable="false" />
+          <Property Name="provinciaId" Type="Int32" Nullable="false" />
+          <Property Name="localidadId" Type="Int32" Nullable="false" />
+          <Property Name="barrioId" Type="Int32" Nullable="false" />
+          <Property Name="calleId" Type="Int32" Nullable="false" />
+          <Property Name="piso" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Torre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="depto" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Barrio" Relationship="HpAerDbModel.FK_dbo_Direcciones_dbo_Barrios_barrioId" FromRole="Direccione" ToRole="Barrio" />
+          <NavigationProperty Name="Calle" Relationship="HpAerDbModel.FK_dbo_Direcciones_dbo_Calles_calleId" FromRole="Direccione" ToRole="Calle" />
+          <NavigationProperty Name="Localidad" Relationship="HpAerDbModel.FK_dbo_Direcciones_dbo_Localidades_localidadId" FromRole="Direccione" ToRole="Localidad" />
+          <NavigationProperty Name="Pais" Relationship="HpAerDbModel.FK_dbo_Direcciones_dbo_Paises_paisId" FromRole="Direccione" ToRole="Pais" />
+          <NavigationProperty Name="Provincia" Relationship="HpAerDbModel.FK_dbo_Direcciones_dbo_Provincias_provinciaId" FromRole="Direccione" ToRole="Provincia" />
+          <Property Name="numero" Type="Int32" />
+          <Property Name="personaId" Type="Int32" />
+          <Property Name="veterinariaId" Type="Int32" />
+          <Property Name="incidenteId" Type="Int32" />
+          <NavigationProperty Name="Incidente" Relationship="HpAerDbModel.FK_dbo_Direcciones_dbo_Incidentes_incidenteId" FromRole="Direccion" ToRole="Incidente" />
+          <NavigationProperty Name="Veterinaria" Relationship="HpAerDbModel.FK_dbo_Direcciones_dbo_Veterinarias_veterinariaId" FromRole="Direccion" ToRole="Veterinaria" />
+          <NavigationProperty Name="Persona" Relationship="HpAerDbModel.FK_dbo_Direcciones_dbo_Personas_personaId" FromRole="Direccion" ToRole="Persona" />
+        </EntityType>
+        <Association Name="FK_dbo_Direcciones_dbo_Barrios_barrioId">
+          <End Type="HpAerDbModel.Barrio" Role="Barrio" Multiplicity="1" />
+          <End Type="HpAerDbModel.Direccion" Role="Direccione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Barrio">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Direccione">
+              <PropertyRef Name="barrioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Direcciones_dbo_Calles_calleId">
+          <End Type="HpAerDbModel.Calle" Role="Calle" Multiplicity="1" />
+          <End Type="HpAerDbModel.Direccion" Role="Direccione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Calle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Direccione">
+              <PropertyRef Name="calleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Direcciones_dbo_Localidades_localidadId">
+          <End Type="HpAerDbModel.Localidad" Role="Localidad" Multiplicity="1" />
+          <End Type="HpAerDbModel.Direccion" Role="Direccione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Localidad">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Direccione">
+              <PropertyRef Name="localidadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Direcciones_dbo_Paises_paisId">
+          <End Type="HpAerDbModel.Pais" Role="Pais" Multiplicity="1" />
+          <End Type="HpAerDbModel.Direccion" Role="Direccione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Direccione">
+              <PropertyRef Name="paisId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Direcciones_dbo_Provincias_provinciaId">
+          <End Type="HpAerDbModel.Provincia" Role="Provincia" Multiplicity="1" />
+          <End Type="HpAerDbModel.Direccion" Role="Direccione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincia">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Direccione">
+              <PropertyRef Name="provinciaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Calles_dbo_Localidads_localidadId">
+          <End Type="HpAerDbModel.Localidad" Role="Localidad" Multiplicity="1" />
+          <End Type="HpAerDbModel.Calle" Role="Calle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Localidad">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Calle">
+              <PropertyRef Name="localidadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Direcciones_dbo_Incidentes_incidenteId">
+          <End Type="HpAerDbModel.Incidente" Role="Incidente" Multiplicity="0..1" />
+          <End Type="HpAerDbModel.Direccion" Role="Direccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Incidente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Direccion">
+              <PropertyRef Name="incidenteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Direcciones_dbo_Veterinarias_veterinariaId">
+          <End Type="HpAerDbModel.Veterinaria" Role="Veterinaria" Multiplicity="0..1" />
+          <End Type="HpAerDbModel.Direccion" Role="Direccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Veterinaria">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Direccion">
+              <PropertyRef Name="veterinariaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fechaNac" Type="DateTime" Precision="3" />
+          <Property Name="fechaAlta" Type="DateTime" Precision="3" />
+          <Property Name="fechaBaja" Type="DateTime" Precision="3" />
+          <Property Name="telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="telefonoCel" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="puntaje" Type="Int32" />
+          <Property Name="UsrId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="estadohab" Type="Boolean" />
+          <Property Name="voluntario" Type="Boolean" />
+          <NavigationProperty Name="Adopcions" Relationship="HpAerDbModel.FK_dbo_Adopcions_dbo_Personas_empleadoId" FromRole="Persona" ToRole="Adopcion" />
+          <NavigationProperty Name="Adopcions1" Relationship="HpAerDbModel.FK_dbo_Adopcions_dbo_Personas_voluntarioId" FromRole="Persona" ToRole="Adopcion" />
+          <NavigationProperty Name="Apadrinamientoes" Relationship="HpAerDbModel.FK_dbo_Apadrinamientoes_dbo_Personas_empleadoId" FromRole="Persona" ToRole="Apadrinamiento" />
+          <NavigationProperty Name="Apadrinamientoes1" Relationship="HpAerDbModel.FK_dbo_Apadrinamientoes_dbo_Personas_voluntarioId" FromRole="Persona" ToRole="Apadrinamiento" />
+          <NavigationProperty Name="Direcciones" Relationship="HpAerDbModel.FK_dbo_Direcciones_dbo_Personas_personaId" FromRole="Persona" ToRole="Direccion" />
+          <NavigationProperty Name="Incidentes" Relationship="HpAerDbModel.FK_dbo_Incidentes_dbo_Personas_voluntarioId" FromRole="Persona" ToRole="Incidente" />
+          <NavigationProperty Name="RegistroAcciones" Relationship="HpAerDbModel.FK_dbo_RegistroAcciones_dbo_Personas_personaId" FromRole="Persona" ToRole="RegistroAccione" />
+        </EntityType>
+        <Association Name="FK_dbo_Adopcions_dbo_Personas_empleadoId">
+          <End Type="HpAerDbModel.Persona" Role="Persona" Multiplicity="0..1" />
+          <End Type="HpAerDbModel.Adopcion" Role="Adopcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Adopcion">
+              <PropertyRef Name="empleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Adopcions_dbo_Personas_voluntarioId">
+          <End Type="HpAerDbModel.Persona" Role="Persona" Multiplicity="0..1" />
+          <End Type="HpAerDbModel.Adopcion" Role="Adopcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Adopcion">
+              <PropertyRef Name="voluntarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Apadrinamientoes_dbo_Personas_empleadoId">
+          <End Type="HpAerDbModel.Persona" Role="Persona" Multiplicity="0..1" />
+          <End Type="HpAerDbModel.Apadrinamiento" Role="Apadrinamiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Apadrinamiento">
+              <PropertyRef Name="empleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Apadrinamientoes_dbo_Personas_voluntarioId">
+          <End Type="HpAerDbModel.Persona" Role="Persona" Multiplicity="0..1" />
+          <End Type="HpAerDbModel.Apadrinamiento" Role="Apadrinamiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Apadrinamiento">
+              <PropertyRef Name="voluntarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Direcciones_dbo_Personas_personaId">
+          <End Type="HpAerDbModel.Persona" Role="Persona" Multiplicity="0..1" />
+          <End Type="HpAerDbModel.Direccion" Role="Direccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Direccion">
+              <PropertyRef Name="personaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Incidentes_dbo_Personas_voluntarioId">
+          <End Type="HpAerDbModel.Persona" Role="Persona" Multiplicity="0..1" />
+          <End Type="HpAerDbModel.Incidente" Role="Incidente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Incidente">
+              <PropertyRef Name="voluntarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_RegistroAcciones_dbo_Personas_personaId">
+          <End Type="HpAerDbModel.Persona" Role="Persona" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="HpAerDbModel.RegistroAccione" Role="RegistroAccione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RegistroAccione">
+              <PropertyRef Name="personaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HpAerDbModelStoreContainer" CdmEntityContainer="HpAerDbEntities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="HpAerDbModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Acciones">
+            <EntityTypeMapping TypeName="HpAerDbModel.Accione">
+              <MappingFragment StoreEntitySet="Acciones">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="isSelected" ColumnName="isSelected" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Adopcions">
+            <EntityTypeMapping TypeName="HpAerDbModel.Adopcion">
+              <MappingFragment StoreEntitySet="Adopcions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="empleadoId" ColumnName="empleadoId" />
+                <ScalarProperty Name="voluntarioId" ColumnName="voluntarioId" />
+                <ScalarProperty Name="animalId" ColumnName="animalId" />
+                <ScalarProperty Name="fechaAlta" ColumnName="fechaAlta" />
+                <ScalarProperty Name="fechaCancelacion" ColumnName="fechaCancelacion" />
+                <ScalarProperty Name="fechaConfirmacion" ColumnName="fechaConfirmacion" />
+                <ScalarProperty Name="dias" ColumnName="dias" />
+                <ScalarProperty Name="fechaFin" ColumnName="fechaFin" />
+                <ScalarProperty Name="fechaEntrega" ColumnName="fechaEntrega" />
+                <ScalarProperty Name="esTemporal" ColumnName="esTemporal" />
+                <ScalarProperty Name="estadoAdopcionId" ColumnName="estadoAdopcionId" />
+                <ScalarProperty Name="tipoAdopcionId" ColumnName="tipoAdopcionId" />
+                <ScalarProperty Name="direccionId" ColumnName="direccionId" />
+                <ScalarProperty Name="VoluntarioUsrId" ColumnName="VoluntarioUsrId" />
+                <ScalarProperty Name="EmpleadoUsrId" ColumnName="EmpleadoUsrId" />
+                <ScalarProperty Name="empleadoName" ColumnName="empleadoName" />
+                <ScalarProperty Name="voluntarioName" ColumnName="voluntarioName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Apadrinamientoes">
+            <EntityTypeMapping TypeName="HpAerDbModel.Apadrinamiento">
+              <MappingFragment StoreEntitySet="Apadrinamientoes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="empleadoId" ColumnName="empleadoId" />
+                <ScalarProperty Name="voluntarioId" ColumnName="voluntarioId" />
+                <ScalarProperty Name="animalId" ColumnName="animalId" />
+                <ScalarProperty Name="fechaAlta" ColumnName="fechaAlta" />
+                <ScalarProperty Name="fechaCancelacion" ColumnName="fechaCancelacion" />
+                <ScalarProperty Name="fechaConfirmacion" ColumnName="fechaConfirmacion" />
+                <ScalarProperty Name="fechaBaja" ColumnName="fechaBaja" />
+                <ScalarProperty Name="importe" ColumnName="importe" />
+                <ScalarProperty Name="estadoApadrinamientoId" ColumnName="estadoApadrinamientoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="HpAerDbModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="HpAerDbModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="HpAerDbModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="HpAerDbModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="ConfirmedEmail" ColumnName="ConfirmedEmail" />
+                <ScalarProperty Name="nombreUsuario" ColumnName="nombreUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AtencionMedicas">
+            <EntityTypeMapping TypeName="HpAerDbModel.AtencionMedica">
+              <MappingFragment StoreEntitySet="AtencionMedicas">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="animalId" ColumnName="animalId" />
+                <ScalarProperty Name="veterinariaId" ColumnName="veterinariaId" />
+                <ScalarProperty Name="productoVeterinariaId" ColumnName="productoVeterinariaId" />
+                <ScalarProperty Name="tratamiento" ColumnName="tratamiento" />
+                <ScalarProperty Name="nombreVeterinario" ColumnName="nombreVeterinario" />
+                <ScalarProperty Name="fechaBaja" ColumnName="fechaBaja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Barrios">
+            <EntityTypeMapping TypeName="HpAerDbModel.Barrio">
+              <MappingFragment StoreEntitySet="Barrios">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="codigoPostal" ColumnName="codigoPostal" />
+                <ScalarProperty Name="localidadId" ColumnName="localidadId" />
+                <ScalarProperty Name="Zona" ColumnName="Zona" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Especies">
+            <EntityTypeMapping TypeName="HpAerDbModel.Especy">
+              <MappingFragment StoreEntitySet="Especies">
+                <ScalarProperty Name="estadoHab" ColumnName="estadoHab" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="fechaBaja" ColumnName="fechaBaja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstadoAdopcions">
+            <EntityTypeMapping TypeName="HpAerDbModel.EstadoAdopcion">
+              <MappingFragment StoreEntitySet="EstadoAdopcions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstadoApadrinamientoes">
+            <EntityTypeMapping TypeName="HpAerDbModel.EstadoApadrinamiento">
+              <MappingFragment StoreEntitySet="EstadoApadrinamientoes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstadoIncidentes">
+            <EntityTypeMapping TypeName="HpAerDbModel.EstadoIncidente">
+              <MappingFragment StoreEntitySet="EstadoIncidentes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="estadoInc" ColumnName="estadoInc" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FecParams">
+            <EntityTypeMapping TypeName="HpAerDbModel.FecParam">
+              <MappingFragment StoreEntitySet="FecParam">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="fecha_desde" ColumnName="fecha_desde" />
+                <ScalarProperty Name="fecha_hasta" ColumnName="fecha_hasta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FileIncidentes">
+            <EntityTypeMapping TypeName="HpAerDbModel.FileIncidente">
+              <MappingFragment StoreEntitySet="FileIncidentes">
+                <ScalarProperty Name="FileIncidenteId" ColumnName="FileIncidenteId" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="FileType" ColumnName="FileType" />
+                <ScalarProperty Name="incidentelId" ColumnName="incidentelId" />
+                <ScalarProperty Name="incidente_Id" ColumnName="incidente_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FilePaths">
+            <EntityTypeMapping TypeName="HpAerDbModel.FilePath">
+              <MappingFragment StoreEntitySet="FilePaths">
+                <ScalarProperty Name="FilePathId" ColumnName="FilePathId" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FileType" ColumnName="FileType" />
+                <ScalarProperty Name="animalId" ColumnName="animalId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Files">
+            <EntityTypeMapping TypeName="HpAerDbModel.File">
+              <MappingFragment StoreEntitySet="Files">
+                <ScalarProperty Name="FileId" ColumnName="FileId" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="FileType" ColumnName="FileType" />
+                <ScalarProperty Name="animalId" ColumnName="animalId" />
+                <ScalarProperty Name="Incidente_Id" ColumnName="Incidente_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Incidentes">
+            <EntityTypeMapping TypeName="HpAerDbModel.Incidente">
+              <MappingFragment StoreEntitySet="Incidentes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="tamanioId" ColumnName="tamanioId" />
+                <ScalarProperty Name="razaId" ColumnName="razaId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="fechaFin" ColumnName="fechaFin" />
+                <ScalarProperty Name="fechaAlta" ColumnName="fechaAlta" />
+                <ScalarProperty Name="fechaBaja" ColumnName="fechaBaja" />
+                <ScalarProperty Name="tipoIncidenteId" ColumnName="tipoIncidenteId" />
+                <ScalarProperty Name="especieId" ColumnName="especieId" />
+                <ScalarProperty Name="estadoIncidenteId" ColumnName="estadoIncidenteId" />
+                <ScalarProperty Name="VoluntarioUsrId" ColumnName="VoluntarioUsrId" />
+                <ScalarProperty Name="voluntarioName" ColumnName="voluntarioName" />
+                <ScalarProperty Name="voluntarioId" ColumnName="voluntarioId" />
+                <ScalarProperty Name="calle" ColumnName="calle" />
+                <ScalarProperty Name="lat" ColumnName="lat" />
+                <ScalarProperty Name="lng" ColumnName="lng" />
+                <ScalarProperty Name="VoluntarioSolucionUsrId" ColumnName="VoluntarioSolucionUsrId" />
+                <ScalarProperty Name="voluntarioSolucionName" ColumnName="voluntarioSolucionName" />
+                <ScalarProperty Name="barrioId" ColumnName="barrioId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Paises">
+            <EntityTypeMapping TypeName="HpAerDbModel.Pais">
+              <MappingFragment StoreEntitySet="Paises">
+                <ScalarProperty Name="pais_habil" ColumnName="pais_habil" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="pais_nombre" ColumnName="pais_nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductoVeterinarias">
+            <EntityTypeMapping TypeName="HpAerDbModel.ProductoVeterinaria">
+              <MappingFragment StoreEntitySet="ProductoVeterinarias">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="fechaBaja" ColumnName="fechaBaja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provincias">
+            <EntityTypeMapping TypeName="HpAerDbModel.Provincia">
+              <MappingFragment StoreEntitySet="Provincias">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="paisId" ColumnName="paisId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Razas">
+            <EntityTypeMapping TypeName="HpAerDbModel.Raza">
+              <MappingFragment StoreEntitySet="Razas">
+                <ScalarProperty Name="estadoHab" ColumnName="estadoHab" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="especieID" ColumnName="especieID" />
+                <ScalarProperty Name="fechaBaja" ColumnName="fechaBaja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegistroAcciones">
+            <EntityTypeMapping TypeName="HpAerDbModel.RegistroAccione">
+              <MappingFragment StoreEntitySet="RegistroAcciones">
+                <ScalarProperty Name="estadoHab" ColumnName="estadoHab" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="fechaAlta" ColumnName="fechaAlta" />
+                <ScalarProperty Name="fechcaBaja" ColumnName="fechcaBaja" />
+                <ScalarProperty Name="comentario" ColumnName="comentario" />
+                <ScalarProperty Name="personaId" ColumnName="personaId" />
+                <ScalarProperty Name="accionesId" ColumnName="accionesId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tamanios">
+            <EntityTypeMapping TypeName="HpAerDbModel.Tamanio">
+              <MappingFragment StoreEntitySet="Tamanios">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="fechaBaja" ColumnName="fechaBaja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoAdopcions">
+            <EntityTypeMapping TypeName="HpAerDbModel.TipoAdopcion">
+              <MappingFragment StoreEntitySet="TipoAdopcions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="tipoAdopcion1" ColumnName="tipoAdopcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoIncidentes">
+            <EntityTypeMapping TypeName="HpAerDbModel.TipoIncidente">
+              <MappingFragment StoreEntitySet="TipoIncidentes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="tipoIncidente1" ColumnName="tipoIncidente" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Veterinarias">
+            <EntityTypeMapping TypeName="HpAerDbModel.Veterinaria">
+              <MappingFragment StoreEntitySet="Veterinarias">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="fechaBaja" ColumnName="fechaBaja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="HpAerDbModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Calles">
+            <EntityTypeMapping TypeName="HpAerDbModel.Calle">
+              <MappingFragment StoreEntitySet="Calles">
+                <ScalarProperty Name="localidadId" ColumnName="localidadId" />
+                <ScalarProperty Name="calle_nombre" ColumnName="calle_nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Animals">
+            <EntityTypeMapping TypeName="HpAerDbModel.Animal">
+              <MappingFragment StoreEntitySet="Animals">
+                <ScalarProperty Name="fechaTratamiento" ColumnName="fechaTratamiento" />
+                <ScalarProperty Name="fechaAdop" ColumnName="fechaAdop" />
+                <ScalarProperty Name="estadoHab" ColumnName="estadoHab" />
+                <ScalarProperty Name="enTratamiento" ColumnName="enTratamiento" />
+                <ScalarProperty Name="enAdopcion" ColumnName="enAdopcion" />
+                <ScalarProperty Name="razaId" ColumnName="razaId" />
+                <ScalarProperty Name="tamanioId" ColumnName="tamanioId" />
+                <ScalarProperty Name="caracteristicas" ColumnName="caracteristicas" />
+                <ScalarProperty Name="fechaBaja" ColumnName="fechaBaja" />
+                <ScalarProperty Name="edad" ColumnName="edad" />
+                <ScalarProperty Name="fechaAlta" ColumnName="fechaAlta" />
+                <ScalarProperty Name="fechaNac" ColumnName="fechaNac" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Localidads">
+            <EntityTypeMapping TypeName="HpAerDbModel.Localidad">
+              <MappingFragment StoreEntitySet="Localidades">
+                <ScalarProperty Name="provinciaId" ColumnName="provinciaId" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Direccions">
+            <EntityTypeMapping TypeName="HpAerDbModel.Direccion">
+              <MappingFragment StoreEntitySet="Direcciones">
+                <ScalarProperty Name="incidenteId" ColumnName="incidenteId" />
+                <ScalarProperty Name="veterinariaId" ColumnName="veterinariaId" />
+                <ScalarProperty Name="personaId" ColumnName="personaId" />
+                <ScalarProperty Name="numero" ColumnName="numero" />
+                <ScalarProperty Name="depto" ColumnName="depto" />
+                <ScalarProperty Name="Torre" ColumnName="Torre" />
+                <ScalarProperty Name="piso" ColumnName="piso" />
+                <ScalarProperty Name="calleId" ColumnName="calleId" />
+                <ScalarProperty Name="barrioId" ColumnName="barrioId" />
+                <ScalarProperty Name="localidadId" ColumnName="localidadId" />
+                <ScalarProperty Name="provinciaId" ColumnName="provinciaId" />
+                <ScalarProperty Name="paisId" ColumnName="paisId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personas">
+            <EntityTypeMapping TypeName="HpAerDbModel.Persona">
+              <MappingFragment StoreEntitySet="Personas">
+                <ScalarProperty Name="voluntario" ColumnName="voluntario" />
+                <ScalarProperty Name="estadohab" ColumnName="estadohab" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="UsrId" ColumnName="UsrId" />
+                <ScalarProperty Name="puntaje" ColumnName="puntaje" />
+                <ScalarProperty Name="telefonoCel" ColumnName="telefonoCel" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="fechaBaja" ColumnName="fechaBaja" />
+                <ScalarProperty Name="fechaAlta" ColumnName="fechaAlta" />
+                <ScalarProperty Name="fechaNac" ColumnName="fechaNac" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

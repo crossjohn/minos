@@ -1,0 +1,141 @@
+﻿@model IEnumerable<HpAer.Models.Direccion>
+@using Hpaer.Helpers
+
+            @{
+                ViewBag.Title = "IndexVp";
+            }
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <strong>Direccion</strong>
+    </div>
+
+    <table class="table">
+
+        <tr class="header-tabla">
+            <th>
+                @Html.DisplayName("Calle")
+            </th>
+            <th>
+                <!-- @Html.DisplayNameFor(model => model.numero) -->
+                @Html.DisplayName("Numero")
+            </th>
+            <th>
+                @Html.DisplayName("Barrio")
+            </th>
+            <th>
+                @Html.DisplayName("Piso")
+            </th>
+            <th>
+                @Html.DisplayName("Departamento")
+            </th>
+            <th>
+                @Html.DisplayName("Torre")
+            </th>
+            <th>
+                @Html.DisplayName("Localidad")
+            </th>
+            <th>
+                @Html.DisplayName("Provincia")
+            </th>
+            <th>
+                @Html.DisplayName("Pais")
+            </th>
+            <th>
+                @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-plus'></span>", "Agregar", "CreateVp", "Direcciones", routeValues: new { PersonaId = ViewBag.PersonaId }, htmlAttributes: new { data_modal = "", @class = "btn btn-primary pull-right" })
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Calle.calle_nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.numero)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Barrio.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.piso)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.depto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Torre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Localidad.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Provincia.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pais.pais_nombre)
+                </td>
+                <td class="text-right">
+                    <div class="pull-right">
+                        @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-pencil'></span>", "Modificar", "EditVp", "Direcciones", routeValues: new { id = item.Id }, htmlAttributes: new { data_modal = "", @class = "btn-default" })
+                        &nbsp;
+                        @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-search'></span>", "Ver", "DetailsVp", "Direcciones", routeValues: new { id = item.Id }, htmlAttributes: new { data_modal = "", @class = "btn-default" })
+                        &nbsp;
+                        @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-remove'></span>", "Borrar", "DeleteVp", "Direcciones", routeValues: new { id = item.Id }, htmlAttributes: new { data_modal = "", @class = "btn-danger" })
+                    </div>
+
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+
+
+
+
+@* ! @Script.Render is not supported in partials - for extensions see: http://stackoverflow.com/a/13765578/209259
+     @Scripts.Render("~/bundles/modalform")
+
+*@
+
+ <script type="text/javascript">
+  //  $(function () {
+      $.ajaxSetup({ cache: false });
+         $("a[data-modal]").on("click", function (e) {
+         // hide dropdown if any (this is used wehen invoking modal from link in bootstrap dropdown )
+        //$(e.target).closest('.btn-group').children('.dropdown-toggle').dropdown('toggle');
+           $('#myModalContent').load(this.href, function () {
+           $('#myModal').modal({
+                  /*backdrop: 'static',*/
+                        keyboard: true
+                        }, 'show');
+                        bindForm(this);
+                       });
+                    return false;
+                });
+                //});
+
+  function bindForm(dialog) {
+      $('form', dialog).submit(function () {
+       $.ajax({
+          url: this.action,
+          type: this.method,
+          data: $(this).serialize(),
+          success: function (result) {
+                   if (result.success) {
+                      $('#myModal').modal('hide');
+                      $('#replacetarget').load(result.url); //  Load data from the server and place the returned HTML into the matched element
+                         } else {
+                             $('#myModalContent').html(result);
+                               bindForm(dialog);
+                                }
+                            }
+                        });
+                        return false;
+            });
+       }
+  </script>

@@ -1,0 +1,152 @@
+﻿@model HpAer.Models.Animal
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="textoTitulo">
+    <h1>Agregar</h1>
+</div>
+@using (Html.BeginForm("Create", "Animales", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="label-button">
+        <label>Animal</label>
+    </div>
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.razaId, "razaId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("razaId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.razaId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.edad, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.edad, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.edad, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.fechaNac, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.fechaNac, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.fechaNac, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.caracteristicas, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.caracteristicas, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.caracteristicas, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.tamanioId, "tamanioId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("tamanioId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.tamanioId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div>
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.fechaAlta)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.fechaAlta)
+                </dd>
+            </dl>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.enAdopcion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.enAdopcion)
+                    @Html.ValidationMessageFor(model => model.enAdopcion, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.fechaAdop)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.fechaAdop)
+                </dd>
+            </dl>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.enTratamiento, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.enTratamiento)
+                    @Html.ValidationMessageFor(model => model.enTratamiento, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.fechaTratamiento)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.fechaTratamiento)
+                </dd>
+            </dl>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.estadoHab, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.estadoHab)
+                    @Html.ValidationMessageFor(model => model.estadoHab, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Avatar", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" id="Avatar" name="upload" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Aceptar" class="btn btn-default" /> |
+                <a href="@Url.Action("Index")" title="Cancelar" class="btn btn-default"> Cancelar </a>
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

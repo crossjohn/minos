@@ -1,0 +1,106 @@
+﻿@model HpAer.Models.Direccion
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" id="myModalLabel">Borrar Direccion</h4>
+</div>
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div>
+    <div class="info-registro">
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayName("Calle")
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Calle.calle_nombre)
+            </dd>
+
+
+            <dt>
+                @Html.DisplayName("Numero")
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.numero)
+            </dd>
+
+            <dt>
+                @Html.DisplayName("Barrio")
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Barrio.nombre)
+            </dd>
+
+            <dt>
+                @Html.DisplayName("Piso")
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.piso)
+            </dd>
+
+            <dt>
+                @Html.DisplayName("Departamento")
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.depto)
+            </dd>
+
+            <dt>
+                @Html.DisplayName("Torre")
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Torre)
+            </dd>
+
+
+            <dt>
+                @Html.DisplayName("Localidad")
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Localidad.nombre)
+            </dd>
+
+            <dt>
+                @Html.DisplayName("Provincia")
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Provincia.nombre)
+            </dd>
+
+            <dt>
+                @Html.DisplayName("Pais")
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Pais.pais_nombre)
+            </dd>
+
+        </dl>
+
+      </div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+    <div class="modal-footer">
+        <h4 class="modal-title" id="myModalLabel">¿Esta seguro de borrar este registro?</h4> 
+        <input type="submit" value="Aceptar" class="btn btn-default" /> |
+        <a data-dismiss="modal" class="btn btn-default"> Cancelar </a>
+    </div>
+
+        }
+  
+    
+    </div>

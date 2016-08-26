@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oracle - unleasshed</title>
+
+   
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+
+
+
+    <link href="@Url.Content("~/Content/themes/base/jquery.ui.core.css")"
+          rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/themes/base/jquery.ui.datepicker.css")"
+          rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/themes/base/jquery.ui.theme.css")"
+          rel="stylesheet" type="text/css" />
+
+    <script src="@Url.Content("~/Scripts/jquery.ui.core.min.js")"
+            type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.ui.datepicker.min.js")"
+            type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/DatePickerReady.js")"
+            type="text/javascript"></script>
+
+</head >
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id=".navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="@Url.Action("Index", "Home")"> <span class="glyphicon glyphicon-home"></span></a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                           role="button" aria-expanded="false">Direcciones<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu" id="direccion_id">
+                            <li role="presentation">
+                                <a href="@Url.Action("Index","Paises")" aria-controls="music" role="tab">
+                                    <span class="glyphicon glyphicon-check"> </span> Paises
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="@Url.Action("Index","Provincias")" aria-controls="music" role="tab">
+                                    <span class="glyphicon glyphicon-check"> </span> Provincias
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="@Url.Action("Index","Localidades")" aria-controls="music" role="tab">
+                                    <span class="glyphicon glyphicon-check"> </span> Localidades
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="@Url.Action("Index","Barrios")" aria-controls="music" role="tab">
+                                    <span class="glyphicon glyphicon-check"> </span> Barrios
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="@Url.Action("Index","Direcciones")" aria-controls="music" role="tab">
+                                    <span class="glyphicon glyphicon-check"> </span> Direcciones
+                                </a>
+                            </li>
+                        </ul>
+
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                           role="button" aria-expanded="false">Personas<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu" id="personas_id">
+                           <li role="presentation">
+                                <a href="@Url.Action("Index","Personas")" aria-controls="music" role="tab">
+                                    <span class="glyphicon glyphicon-check"> </span> Personas
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" aria-controls="music" role="tab" data-toggle="tab">
+                                    <span class="glyphicon glyphicon-check"> </span> Voluntarios
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" aria-controls="music" role="tab" data-toggle="tab">
+                                    <span class="glyphicon glyphicon-check"> </span> Accion de voluntarios
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                           role="button" aria-expanded="false">Veterinarias<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu" id="veterinarias_id">
+                            <li role="presentation">
+                                <a href="#" aria-controls="music" role="tab" data-toggle="tab">
+                                    <span class="glyphicon glyphicon-check"> </span> Veterinarias
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" aria-controls="music" role="tab" data-toggle="tab">
+                                    <span class="glyphicon glyphicon-check"> </span> Productos
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                           role="button" aria-expanded="false">Animales<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu" id="animales_id">
+                            <li role="presentation">
+                                <a href="@Url.Action("Index","Especies")" aria-controls="music" role="tab">
+                                    <span class="glyphicon glyphicon-check"> </span> Especies
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="@Url.Action("Index","Razas")" aria-controls="music" role="tab">
+                                    <span class="glyphicon glyphicon-check"> </span> Razas
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="@Url.Action("Index","Animales")" aria-controls="music" role="tab">
+                                    <span class="glyphicon glyphicon-check"> </span> Animales
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="@Url.Action("About","Home")" aria-controls="music" role="tab"> Acerca de</a></li>
+                    <li><a href="@Url.Action("Contact","Home")" aria-controls="music" role="tab">Contacto</a></li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

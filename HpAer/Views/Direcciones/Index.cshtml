@@ -1,0 +1,106 @@
+﻿@model IEnumerable<HpAer.Models.Direccion>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="textoTitulo">
+    <h1>Direcciones</h1>
+</div>
+
+
+ <p>
+     <div class="label-button">
+          <label>Agregar</label>
+           <a href="@Url.Action("Create")" title="Agregar">
+             <i type="button" class="btn btn-info glyphicon glyphicon-plus"> </i>
+             <span class="sr-only">Create</span>
+           </a>   
+      </div>
+</p>
+ 
+    <table class="table">
+        
+            <tr class="header-tabla">
+                <th>
+                    @Html.DisplayName("Calle")
+                </th>
+                <th>
+                    <!-- @Html.DisplayNameFor(model => model.numero) -->
+                          @Html.DisplayName("Numero")
+                </th>
+                <th>
+                    @Html.DisplayName("Barrio")
+                </th>
+                <th>
+                    @Html.DisplayName("Piso")
+                </th>
+                <th>
+                    @Html.DisplayName("Departamento")
+                </th>
+                <th>
+                    @Html.DisplayName("Torre")
+                </th>
+                <th>
+                    @Html.DisplayName("Localidad")
+                </th>
+                <th>
+                    @Html.DisplayName("Provincia")
+                </th>
+                <th>
+                    @Html.DisplayName("Pais")
+                </th>
+                <th></th>
+            </tr>
+  
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Calle.calle_nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.numero)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Barrio.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.piso)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.depto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Torre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Localidad.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Provincia.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pais.pais_nombre)
+                </td>
+                <td class="text-right">
+
+                    <a href="@Url.Action("Edit", new { id = item.Id })" title="Editar">
+                        <i class="glyphicon glyphicon-pencil"></i>
+                        <span class="sr-only">Edit</span>
+                    </a> |
+
+                    <a href="@Url.Action("Details", new { id = item.Id })" title="Ver">
+                        <i class="glyphicon glyphicon-search"></i>
+                        <span class="sr-only">Delete</span>
+                    </a> |
+                    <a href="@Url.Action("Delete", new { id = item.Id })" title="Borrar">
+                        <i class="glyphicon glyphicon-remove"></i>
+                        <span class="sr-only">Delete</span>
+                    </a>
+
+                </td>
+            </tr>
+        }
+
+    </table>

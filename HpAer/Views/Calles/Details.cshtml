@@ -1,0 +1,39 @@
+﻿@model HpAer.Models.Calle
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="textoTitulo">
+    <h1>Detalle</h1>
+</div>
+
+<div class="label-button">
+    <label>Calle</label>
+</div>
+
+<div class="info-registro">
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.calle_nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.calle_nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Localidade.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Localidade.nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a href="@Url.Action("Edit", new { id = Model.Id })" class="btn btn-default"> Modificar </a> |
+    <a href="@Url.Action("Index")" class="btn btn-default"> Cerrar </a>
+</p>

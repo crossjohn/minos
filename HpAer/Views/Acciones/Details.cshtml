@@ -1,0 +1,47 @@
+﻿@model HpAer.Models.Accione
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="textoTitulo">
+    <h1>Detalle</h1>
+</div>
+
+<div class="label-button">
+    <label>Accion</label>
+</div>
+
+<div class="info-registro">
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isSelected)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isSelected)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a href="@Url.Action("Edit", new { id = Model.Id })" class="btn btn-default"> Modificar </a> |
+    <a href="@Url.Action("Index")" class="btn btn-default"> Cerrar </a>
+</p>

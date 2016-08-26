@@ -1,0 +1,59 @@
+﻿@model IEnumerable<HpAer.Models.Localidad>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="textoTitulo">
+    <h1>Localidades</h1>
+</div>
+
+<p>
+    <div class="label-button">
+        <label>Agregar</label>
+        <a href="@Url.Action("Create")" title="Agregar">
+            <i type="button" class="btn btn-info glyphicon glyphicon-plus"> </i>
+            <span class="sr-only">Create</span>
+        </a>
+    </div>
+</p>
+
+<table class="table">
+    <tr class="header-tabla">
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.provinciaId)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class ="boton-acciones">
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Provincia.nombre)
+            </td>
+            <td class="text-right">
+                <a href="@Url.Action("Edit", new { id = item.Id })" title="Editar">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                    <span class="sr-only">Edit</span>
+                </a> |
+
+                <a href="@Url.Action("Details", new { id = item.Id })" title="Ver">
+                    <i class="glyphicon glyphicon-search"></i>
+                    <span class="sr-only">Delete</span>
+                </a> |
+                <a href="@Url.Action("Delete", new { id = item.Id })" title="Borrar">
+                    <i class="glyphicon glyphicon-remove"></i>
+                    <span class="sr-only">Delete</span>
+                </a>
+            </td>
+        </tr>
+    }
+
+</table>

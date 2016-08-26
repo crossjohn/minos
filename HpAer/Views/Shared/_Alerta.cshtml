@@ -1,0 +1,35 @@
+﻿@model HpAer.Models.Direccion
+@using Hpaer.Helpers
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" id="myModalLabel">Ups!!</h4>
+</div>
+
+@{
+    ViewBag.Title = "Alerta";
+}
+
+
+@using (Html.BeginForm())
+{
+    <div class="modal-body">
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+    
+            <h3 class="modal-title" id="myModalLabel">No podemos continuar</h3>
+
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <h4 class="modal-title" id="myModalLabel"> "Existe una direccion registrada" </h4>
+        <div class="pull-right">
+            <a data-dismiss="modal" class="btn btn-default"> Cerrar </a>
+        </div>
+    </div>
+}
+
+
