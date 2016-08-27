@@ -62,7 +62,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.calleId, "Calle", htmlAttributes: new { @class = "control-label col-md-3" })
                     <div class="col-md-9">
-                        @Html.EditorFor(model => model.Calle.calle_nombre, new { htmlAttributes = new { @class = "form-control", @id = "calleId" } })
+                        @Html.DropDownList("calleId", null, htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.calleId, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -82,15 +82,6 @@
                         @Html.ValidationMessageFor(model => model.piso, "", new { @class = "text-danger" })
                     </div>
                 </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Torre, "Torre", htmlAttributes: new { @class = "control-label col-md-3" })
-                    <div class="col-md-9">
-                        @Html.EditorFor(model => model.Torre, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Torre, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
                 <div class="form-group">
                     @Html.LabelFor(model => model.depto, "Departamento", htmlAttributes: new { @class = "control-label col-md-3" })
                     <div class="col-md-9">
@@ -98,6 +89,15 @@
                         @Html.ValidationMessageFor(model => model.depto, "", new { @class = "text-danger" })
                     </div>
                 </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Torre, "Torre", htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.Torre, new { htmlAttributes = new { @class = "form-control", @id = "calletxt" } })
+                        @Html.ValidationMessageFor(model => model.Torre, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <input type="submit" value="Aceptar" class="btn btn-default" /> |
@@ -210,7 +210,7 @@
     var geocoder;
     var map;
     var marker;
-    $('#calleId').focusout(function () {
+    $('#calletxt').focusout(function () {
         //Obtengo el nombre del pais
         var pais = $('#paisId').val();
         // var pais_nombre = pais.options[pais.selectedIndex].text;
@@ -221,7 +221,7 @@
         var provincia = $('#provinciaId').val();
         //var provincia_nombre = provincia.options[provincia.selectedIndex].text;
         //Obtengo el nombre de la calle introducida
-        var dir = $('#calleId').val(); // document.getElementById('calleId').value;
+        var dir = $('#calletxt').val(); // document.getElementById('calleId').value;
         //var direccion = dir + ','+localidad_nombre+','+provincia_nombre+','+pais_nombre;
         if (localidad != null && provincia != null && pais != 'Selects items') {
             var pais_nombre = $('#paisId option:selected').html();
@@ -293,7 +293,7 @@
                 if (results[0]) {
                     //alert(results[0].formatted_address);
                     var direccion = results[0].formatted_address.split(",");
-                    document.getElementById("calleId").value = direccion[0];
+                    document.getElementById("calletxt").value = direccion[0];
                     centrarMapa(latLng);
                 }
             }
